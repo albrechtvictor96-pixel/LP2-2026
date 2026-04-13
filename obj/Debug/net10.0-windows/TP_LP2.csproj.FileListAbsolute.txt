@@ -1,0 +1,16 @@
+C:\Users\Victor Albrecht\source\repos\TP_LP2\bin\Debug\net10.0-windows\TP_LP2.exe
+C:\Users\Victor Albrecht\source\repos\TP_LP2\bin\Debug\net10.0-windows\TP_LP2.deps.json
+C:\Users\Victor Albrecht\source\repos\TP_LP2\bin\Debug\net10.0-windows\TP_LP2.runtimeconfig.json
+C:\Users\Victor Albrecht\source\repos\TP_LP2\bin\Debug\net10.0-windows\TP_LP2.dll
+C:\Users\Victor Albrecht\source\repos\TP_LP2\bin\Debug\net10.0-windows\TP_LP2.pdb
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.Form1.resources
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.csproj.GenerateResource.cache
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.AssemblyInfoInputs.cache
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.AssemblyInfo.cs
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.csproj.CoreCompileInputs.cache
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.dll
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\refint\TP_LP2.dll
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.pdb
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\TP_LP2.genruntimeconfig.cache
+C:\Users\Victor Albrecht\source\repos\TP_LP2\obj\Debug\net10.0-windows\ref\TP_LP2.dll
