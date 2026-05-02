@@ -20,8 +20,7 @@ namespace TP_LP2
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            label1.Text = "hola";
-
+            label1.Text = textBox1.Text;
 
         }
 
