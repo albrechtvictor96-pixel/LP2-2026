@@ -28,33 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            inicio = new Button();
+            label1 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
-            // inicio
+            // label1
             // 
-            inicio.BackColor = Color.Fuchsia;
-            inicio.Location = new Point(300, 155);
-            inicio.Name = "inicio";
-            inicio.Size = new Size(154, 70);
-            inicio.TabIndex = 0;
-            inicio.Text = "Hola mundo";
-            inicio.UseVisualStyleBackColor = false;
-            inicio.Click += button1_Click;
+            label1.AutoSize = true;
+            label1.Location = new Point(352, 191);
+            label1.Name = "label1";
+            label1.Size = new Size(92, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Hola Mundo";
+            label1.Click += label1_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(302, 244);
+            button1.Name = "button1";
+            button1.Size = new Size(151, 45);
+            button1.TabIndex = 1;
+            button1.Text = "Cambiar texto label";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(inicio);
+            Controls.Add(button1);
+            Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button inicio;
+        private Label label1;
+        private Button button1;
     }
 }
