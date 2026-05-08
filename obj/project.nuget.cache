@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "czL+JzOryBE=",
+  "dgSpecHash": "U1T2HfRak+o=",
   "success": true,
   "projectFilePath": "C:\\Users\\Victor Albrecht\\source\\repos\\LP2-2026\\TP_LP2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Victor Albrecht\\.nuget\\packages\\json.net\\1.0.33\\json.net.1.0.33.nupkg.sha512"
+  ],
   "logs": []
 }
