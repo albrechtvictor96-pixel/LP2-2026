@@ -33,4 +33,6 @@ C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\ref\TP_LP2.dll
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.csproj.AssemblyReference.cache
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.Properties.Resources.resources
-C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.USUARIOS.AgregarUsuario.resources
+C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\Json.Net.dll
+C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.AgregarUsuario.resources
+C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.csproj.Up2Date
