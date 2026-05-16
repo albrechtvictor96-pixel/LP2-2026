@@ -19,7 +19,6 @@ C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\TP_LP2.
 C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\TP_LP2.runtimeconfig.json
 C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\TP_LP2.dll
 C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\TP_LP2.pdb
-C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.Form1.resources
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.csproj.GenerateResource.cache
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.AssemblyInfoInputs.cache
@@ -36,3 +35,4 @@ C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.
 C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\Json.Net.dll
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.AgregarUsuario.resources
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.csproj.Up2Date
+C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.FormLogin.resources
