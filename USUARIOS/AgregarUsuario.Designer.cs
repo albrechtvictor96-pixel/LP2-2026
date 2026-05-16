@@ -51,7 +51,6 @@
             label1.Size = new Size(117, 20);
             label1.TabIndex = 0;
             label1.Text = "Agregar Usuario";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -136,7 +135,7 @@
             botonok.TabIndex = 11;
             botonok.Text = "OK";
             botonok.UseVisualStyleBackColor = true;
-            botonok.Click += botonok_Click;
+            botonok.Click += btnAgregar_Click;
             // 
             // botoncancel
             // 
@@ -146,6 +145,7 @@
             botoncancel.TabIndex = 12;
             botoncancel.Text = "CANCEL";
             botoncancel.UseVisualStyleBackColor = true;
+            botoncancel.Click += botoncancel_Click;
             // 
             // txtUsuario
             // 

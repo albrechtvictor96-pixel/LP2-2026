@@ -1,7 +1,10 @@
 using System;
 using System.IO;
-using System.Windows.Forms;
 using System.Text.Json;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace TP_LP2
 {
     public partial class FormLogin : Form
@@ -11,54 +14,92 @@ namespace TP_LP2
             InitializeComponent();
         }
 
-        private void btningresar_Click(object sender, EventArgs e)
+        private void btnIngresar_Click(object sender, EventArgs e)
         {
             string usuarioIngresado = txtusuario.Text.Trim();
             string passwordIngresada = txtpassword.Text.Trim();
 
-            // 1. Validar campos vacíos de inmediato
             if (string.IsNullOrEmpty(usuarioIngresado) || string.IsNullOrEmpty(passwordIngresada))
             {
-                MessageBox.Show("Por favor, ingrese un usuario y contraseña válidos.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, ingrese un usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Definir la ruta del JSON
-            string rutaJson = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../USUARIOS/usuarios.json");
+            // Misma ruta inteligente
+            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
+            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
 
-            // Si el archivo NO existe, avisamos y salimos. Así evitamos que el código se vaya a la derecha.
             if (!File.Exists(rutaJson))
             {
-                MessageBox.Show("No se encontró el archivo de base de datos 'usuarios.json'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay usuarios registrados. Regístrate primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 3. Si llegamos aquí, el archivo existe. Ejecutamos la lectura de forma limpia.
             try
             {
                 string json = File.ReadAllText(rutaJson);
-                List<TP_LP2.Usuario> usuarios = JsonSerializer.Deserialize<List<TP_LP2.Usuario>>(json);
+                List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>();
 
-                // Buscamos el usuario (con 'Password' que ya te funcionó)
-                var usuarioEncontrado = usuarios.Find(u => u.Nombre.Equals(usuarioIngresado, StringComparison.OrdinalIgnoreCase) && u.Password == passwordIngresada);
+                Usuario usuarioEncontrado = usuarios.FirstOrDefault(u =>
+                    u.Username.Equals(usuarioIngresado, StringComparison.OrdinalIgnoreCase) &&
+                    u.Password == passwordIngresada);
 
-                if (usuarioEncontrado == null)
+                if (usuarioEncontrado != null)
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                // Si el usuario es correcto:
-                MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}!", "Inicio de sesión exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-
-                // Aquí puedes abrir tu pantalla principal (Home) cuando quieras:
-                // Home pantallaHome = new Home();
-                // pantallaHome.Show();
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al leer el archivo de usuarios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+            private void btningresar_Click_1(object sender, EventArgs e)
+        {
+            string usuarioIngresado = txtusuario.Text.Trim(); 
+            string passwordIngresada = txtpassword.Text.Trim(); 
+
+            if (string.IsNullOrEmpty(usuarioIngresado) || string.IsNullOrEmpty(passwordIngresada))
+            {
+                MessageBox.Show("Por favor, ingrese un usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Ruta inteligente
+            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
+            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
+
+            if (!File.Exists(rutaJson))
+            {
+                MessageBox.Show("No hay usuarios registrados. Regístrate primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                string json = File.ReadAllText(rutaJson);
+                List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>();
+
+                Usuario usuarioEncontrado = usuarios.FirstOrDefault(u =>
+                    u.Username.Equals(usuarioIngresado, StringComparison.OrdinalIgnoreCase) &&
+                    u.Password == passwordIngresada);
+
+                if (usuarioEncontrado != null)
+                {
+                    MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

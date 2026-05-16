@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+using System.IO;
 using System.Text.Json;
+using System.Windows.Forms;
+using System.Collections.Generic;
+
 namespace TP_LP2
 {
     public partial class AgregarUsuario : Form
@@ -15,52 +13,73 @@ namespace TP_LP2
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
+            // 1. Capturar datos de tus TextBox
+            string nombre = txtNombre.Text.Trim();
+            string apellido = txtApellido.Text.Trim();
+            string username = txtUsuario.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
-        }
-
-
-        private void botonok_Click(object sender, EventArgs e)
-        {
-            string rutaArchivo = "Usuarios.json";
-            List<Usuario> listaUsuarios = new List<Usuario>();
-            try
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                // 1. Leer existentes
-                if (File.Exists(rutaArchivo))
+                MessageBox.Show("Por favor, complete los campos obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Crear el objeto
+            Usuario nuevoUsuario = new Usuario()
+            {
+                Nombre = nombre,
+                Apellido = apellido,
+                Username = username,
+                Password = password
+            };
+
+            // 3. Ruta Inteligente (Crea la carpeta sola donde se ejecuta el programa)
+            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
+            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
+
+            if (!Directory.Exists(carpetaUsuarios))
+            {
+                Directory.CreateDirectory(carpetaUsuarios);
+            }
+
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            if (File.Exists(rutaJson))
+            {
+                try
                 {
-                    string contenido = File.ReadAllText(rutaArchivo);
-                    if (!string.IsNullOrWhiteSpace(contenido))
+                    string jsonExistente = File.ReadAllText(rutaJson);
+                    if (!string.IsNullOrEmpty(jsonExistente))
                     {
-                        listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(contenido);
+                        listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonExistente) ?? new List<Usuario>();
                     }
                 }
-                // 2. Crear el objeto con TODAS las propiedades de tu clase
-                Usuario nuevo = new Usuario()
+                catch (Exception)
                 {
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    Username = txtUsuario.Text,
-                    Password = txtPassword.Text
-                };
-                // 3. Agregar y Guardar
-                listaUsuarios.Add(nuevo);
-                string jsonString = JsonSerializer.Serialize(listaUsuarios, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(rutaArchivo, jsonString);
-
-                MessageBox.Show("¡Usuario registrado con éxito!");
-
-                // Limpiar los campos para el siguiente registro
-                txtNombre.Clear();
-                txtApellido.Clear();
-                txtUsuario.Clear();
-                txtPassword.Clear();
+                    listaUsuarios = new List<Usuario>();
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar: " + ex.Message);
-            }
+
+            listaUsuarios.Add(nuevoUsuario);
+
+            // 4. Grabar en el disco duro
+            string jsonActualizado = JsonSerializer.Serialize(listaUsuarios, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(rutaJson, jsonActualizado);
+
+            MessageBox.Show("¡Usuario registrado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // 5. Ir al Login automáticamente
+            FormLogin ventanaLogin = new FormLogin();
+            ventanaLogin.Show();
+            this.Hide();
+        }
+
+        private void botoncancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
