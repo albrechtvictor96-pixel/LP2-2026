@@ -52,6 +52,7 @@
             btnModificar.TabIndex = 1;
             btnModificar.Text = "Modificar Usuario";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnEliminar
             // 

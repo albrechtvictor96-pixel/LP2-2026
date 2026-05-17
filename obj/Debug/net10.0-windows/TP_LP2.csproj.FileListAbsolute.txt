@@ -36,4 +36,4 @@ C:\Users\Victor Albrecht\source\repos\LP2-2026\bin\Debug\net10.0-windows\Json.Ne
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.AgregarUsuario.resources
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.csproj.Up2Date
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.FormLogin.resources
-C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.USUARIOS.FormGestionUsuarios.resources
+C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.FormGestionUsuarios.resources
