@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
-namespace TP_LP2.USUARIOS
+namespace TP_LP2
 {
     public partial class FormGestionUsuarios : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace TP_LP2.USUARIOS
+﻿namespace TP_LP2
 {
     partial class FormGestionUsuarios
     {

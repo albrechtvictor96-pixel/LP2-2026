@@ -105,7 +105,7 @@ namespace TP_LP2
 
         private void btnGestion_Click(object sender, EventArgs e)
         {
-            TP_LP2.USUARIOS.FormGestionUsuarios formGestion = new TP_LP2.USUARIOS.FormGestionUsuarios();
+            TP_LP2.FormGestionUsuarios formGestion = new TP_LP2.FormGestionUsuarios();
             formGestion.Show();
             this.Hide();
         }
