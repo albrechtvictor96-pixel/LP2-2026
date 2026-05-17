@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dvgUsuarios = new DataGridView();
+            dgvUsuarios = new DataGridView();
             btnModificar = new Button();
             btnEliminar = new Button();
             btnVolver = new Button();
-            ((System.ComponentModel.ISupportInitialize)dvgUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
-            // dvgUsuarios
+            // dgvUsuarios
             // 
-            dvgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgUsuarios.Location = new Point(170, 58);
-            dvgUsuarios.Name = "dvgUsuarios";
-            dvgUsuarios.RowHeadersWidth = 51;
-            dvgUsuarios.Size = new Size(391, 170);
-            dvgUsuarios.TabIndex = 0;
+            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuarios.Location = new Point(170, 58);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.RowHeadersWidth = 51;
+            dgvUsuarios.Size = new Size(391, 170);
+            dgvUsuarios.TabIndex = 0;
             // 
             // btnModificar
             // 
@@ -71,6 +71,7 @@
             btnVolver.TabIndex = 3;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormGestionUsuarios
             // 
@@ -80,17 +81,17 @@
             Controls.Add(btnVolver);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
-            Controls.Add(dvgUsuarios);
+            Controls.Add(dgvUsuarios);
             Name = "FormGestionUsuarios";
             Text = "FormGestionUsuarios";
             Load += FormGestionUsuarios_Load;
-            ((System.ComponentModel.ISupportInitialize)dvgUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dvgUsuarios;
+        private DataGridView dgvUsuarios;
         private Button btnModificar;
         private Button btnEliminar;
         private Button btnVolver;

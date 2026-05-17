@@ -33,6 +33,7 @@
             txtusuario = new TextBox();
             txtpassword = new TextBox();
             btningresar = new Button();
+            btnGestion = new Button();
             SuspendLayout();
             // 
             // label1
@@ -69,19 +70,30 @@
             // 
             // btningresar
             // 
-            btningresar.Location = new Point(331, 315);
+            btningresar.Location = new Point(331, 299);
             btningresar.Name = "btningresar";
-            btningresar.Size = new Size(94, 29);
+            btningresar.Size = new Size(161, 45);
             btningresar.TabIndex = 4;
             btningresar.Text = "Ingresar";
             btningresar.UseVisualStyleBackColor = true;
             btningresar.Click += btningresar_Click_1;
+            // 
+            // btnGestion
+            // 
+            btnGestion.Location = new Point(315, 383);
+            btnGestion.Name = "btnGestion";
+            btnGestion.Size = new Size(189, 36);
+            btnGestion.TabIndex = 6;
+            btnGestion.Text = "Gestionar Usuarios";
+            btnGestion.UseVisualStyleBackColor = true;
+            btnGestion.Click += btnGestion_Click;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(827, 488);
+            Controls.Add(btnGestion);
             Controls.Add(btningresar);
             Controls.Add(txtpassword);
             Controls.Add(txtusuario);
@@ -100,5 +112,6 @@
         private TextBox txtusuario;
         private TextBox txtpassword;
         private Button btningresar;
+        private Button btnGestion;
     }
 }

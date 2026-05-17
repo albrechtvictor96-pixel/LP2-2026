@@ -58,10 +58,10 @@ namespace TP_LP2
                 MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-            private void btningresar_Click_1(object sender, EventArgs e)
+        private void btningresar_Click_1(object sender, EventArgs e)
         {
-            string usuarioIngresado = txtusuario.Text.Trim(); 
-            string passwordIngresada = txtpassword.Text.Trim(); 
+            string usuarioIngresado = txtusuario.Text.Trim();
+            string passwordIngresada = txtpassword.Text.Trim();
 
             if (string.IsNullOrEmpty(usuarioIngresado) || string.IsNullOrEmpty(passwordIngresada))
             {
@@ -101,6 +101,13 @@ namespace TP_LP2
             {
                 MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnGestion_Click(object sender, EventArgs e)
+        {
+            TP_LP2.USUARIOS.FormGestionUsuarios formGestion = new TP_LP2.USUARIOS.FormGestionUsuarios();
+            formGestion.Show();
+            this.Hide();
         }
     }
 }
