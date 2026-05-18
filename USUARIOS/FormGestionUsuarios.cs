@@ -84,7 +84,7 @@ namespace TP_LP2
         private void btnModificar_Click(object sender, EventArgs e)
         {
             List<Usuario> listaActual = (List<Usuario>)dgvUsuarios.DataSource;
-            if(listaActual != null)
+            if (listaActual != null)
             {
                 string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
                 string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
@@ -99,6 +99,16 @@ namespace TP_LP2
                     MessageBox.Show("Error al modificar los usuarios: " + ex.Message);
                 }
             }
+        }
+
+        private void btnRegistrarNuevo_Click(object sender, EventArgs e)
+        {
+            // Abrir el formulario de registro para agregar un nuevo usuario
+            AgregarUsuario pantallaRegistro = new AgregarUsuario();
+            // Mostrar el formulario de registro
+            pantallaRegistro.Show();
+            // Recargar la tabla de usuarios después de cerrar el formulario de registro
+            CargarUsuariosEnTabla();
         }
     }
 }

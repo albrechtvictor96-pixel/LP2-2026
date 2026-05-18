@@ -32,13 +32,14 @@
             btnModificar = new Button();
             btnEliminar = new Button();
             btnVolver = new Button();
+            btnRegistrarNuevo = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
             // dgvUsuarios
             // 
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(170, 58);
+            dgvUsuarios.Location = new Point(187, 57);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
             dgvUsuarios.Size = new Size(391, 170);
@@ -46,7 +47,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(84, 301);
+            btnModificar.Location = new Point(103, 301);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(151, 35);
             btnModificar.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(258, 301);
+            btnEliminar.Location = new Point(295, 301);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(164, 35);
             btnEliminar.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(450, 301);
+            btnVolver.Location = new Point(502, 301);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(140, 35);
             btnVolver.TabIndex = 3;
@@ -74,11 +75,22 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // btnRegistrarNuevo
+            // 
+            btnRegistrarNuevo.Location = new Point(313, 371);
+            btnRegistrarNuevo.Name = "btnRegistrarNuevo";
+            btnRegistrarNuevo.Size = new Size(134, 35);
+            btnRegistrarNuevo.TabIndex = 4;
+            btnRegistrarNuevo.Text = "Registrar Nuevo";
+            btnRegistrarNuevo.UseVisualStyleBackColor = true;
+            btnRegistrarNuevo.Click += btnRegistrarNuevo_Click;
+            // 
             // FormGestionUsuarios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnRegistrarNuevo);
             Controls.Add(btnVolver);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
@@ -96,5 +108,6 @@
         private Button btnModificar;
         private Button btnEliminar;
         private Button btnVolver;
+        private Button btnRegistrarNuevo;
     }
 }
