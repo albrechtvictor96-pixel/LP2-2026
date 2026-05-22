@@ -1,4 +1,4 @@
-﻿namespace TP_LP2.COMPRAS
+﻿namespace TP_LP2
 {
     partial class RegistroCompras
     {
@@ -30,19 +30,19 @@
         {
             label1 = new Label();
             label2 = new Label();
-            textBox4 = new TextBox();
+            txtFacultad = new TextBox();
             label3 = new Label();
-            txt = new TextBox();
-            button1 = new Button();
-            textBox3 = new TextBox();
+            txtNombre = new TextBox();
+            btnRegistrar = new Button();
+            txtDescripcion = new TextBox();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            button2 = new Button();
-            button3 = new Button();
+            dtpFecha = new DateTimePicker();
+            btnEditar = new Button();
+            btnEliminar = new Button();
             label7 = new Label();
-            textBox2 = new TextBox();
+            txtCantidad = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -63,12 +63,12 @@
             label2.TabIndex = 1;
             label2.Text = "Descripcion";
             // 
-            // textBox4
+            // txtFacultad
             // 
-            textBox4.Location = new Point(545, 302);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(204, 27);
-            textBox4.TabIndex = 11;
+            txtFacultad.Location = new Point(545, 302);
+            txtFacultad.Name = "txtFacultad";
+            txtFacultad.Size = new Size(204, 27);
+            txtFacultad.TabIndex = 11;
             // 
             // label3
             // 
@@ -79,35 +79,37 @@
             label3.TabIndex = 4;
             label3.Text = "Nombre ";
             // 
-            // txt
+            // txtNombre
             // 
-            txt.Location = new Point(123, 114);
-            txt.Name = "txt";
-            txt.Size = new Size(247, 27);
-            txt.TabIndex = 5;
+            txtNombre.Location = new Point(123, 114);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(247, 27);
+            txtNombre.TabIndex = 5;
             // 
-            // button1
+            // btnRegistrar
             // 
-            button1.Location = new Point(27, 362);
-            button1.Name = "button1";
-            button1.Size = new Size(197, 56);
-            button1.TabIndex = 6;
-            button1.Text = "Registrar Pedido";
-            button1.UseVisualStyleBackColor = true;
+            btnRegistrar.Location = new Point(27, 362);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(197, 56);
+            btnRegistrar.TabIndex = 6;
+            btnRegistrar.Text = "Registrar Pedido";
+            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
-            // textBox3
+            // txtDescripcion
             // 
-            textBox3.Location = new Point(604, 188);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 27);
-            textBox3.TabIndex = 16;
+            txtDescripcion.Location = new Point(557, 188);
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(182, 27);
+            txtDescripcion.TabIndex = 16;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(123, 53);
+            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(119, 32);
             label4.Name = "label4";
-            label4.Size = new Size(148, 20);
+            label4.Size = new Size(227, 31);
             label4.TabIndex = 8;
             label4.Text = "Registro de Compras";
             // 
@@ -128,30 +130,32 @@
             label6.TabIndex = 10;
             label6.Text = "Facultad";
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            dateTimePicker1.Location = new Point(514, 48);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 27);
-            dateTimePicker1.TabIndex = 12;
+            dtpFecha.Location = new Point(514, 48);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(250, 27);
+            dtpFecha.TabIndex = 12;
             // 
-            // button2
+            // btnEditar
             // 
-            button2.Location = new Point(293, 362);
-            button2.Name = "button2";
-            button2.Size = new Size(166, 56);
-            button2.TabIndex = 13;
-            button2.Text = "Editar Compra";
-            button2.UseVisualStyleBackColor = true;
+            btnEditar.Location = new Point(293, 362);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(166, 56);
+            btnEditar.TabIndex = 13;
+            btnEditar.Text = "Editar Compra";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
-            // button3
+            // btnEliminar
             // 
-            button3.Location = new Point(535, 362);
-            button3.Name = "button3";
-            button3.Size = new Size(204, 56);
-            button3.TabIndex = 14;
-            button3.Text = "Eliminar Compra";
-            button3.UseVisualStyleBackColor = true;
+            btnEliminar.Location = new Point(535, 362);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(204, 56);
+            btnEliminar.TabIndex = 14;
+            btnEliminar.Text = "Eliminar Compra";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // label7
             // 
@@ -162,31 +166,31 @@
             label7.TabIndex = 15;
             label7.Text = "Fecha";
             // 
-            // textBox2
+            // txtCantidad
             // 
-            textBox2.Location = new Point(119, 289);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(251, 27);
-            textBox2.TabIndex = 17;
+            txtCantidad.Location = new Point(119, 289);
+            txtCantidad.Name = "txtCantidad";
+            txtCantidad.Size = new Size(251, 27);
+            txtCantidad.TabIndex = 17;
             // 
             // RegistroCompras
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox2);
+            Controls.Add(txtCantidad);
             Controls.Add(label7);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnEditar);
+            Controls.Add(dtpFecha);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBox3);
-            Controls.Add(button1);
-            Controls.Add(txt);
+            Controls.Add(txtDescripcion);
+            Controls.Add(btnRegistrar);
+            Controls.Add(txtNombre);
             Controls.Add(label3);
-            Controls.Add(textBox4);
+            Controls.Add(txtFacultad);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "RegistroCompras";
@@ -199,19 +203,19 @@
 
         private Label label1;
         private Label label2;
-        private TextBox txt;
+        private TextBox txtNombre;
         private Label label3;
-        private TextBox textBox3;
-        private Button button1;
+        private TextBox txtDescripcion;
+        private Button btnRegistrar;
         private TextBox txtdescripcion;
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox4;
-        private DateTimePicker dateTimePicker1;
-        private Button button2;
-        private Button button3;
+        private TextBox txtFacultad;
+        private DateTimePicker dtpFecha;
+        private Button btnEditar;
+        private Button btnEliminar;
         private Label label7;
-        private TextBox textBox2;
+        private TextBox txtCantidad;
     }
 }
