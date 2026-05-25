@@ -37,11 +37,11 @@ namespace TP_LP2
             //Creacion de nuevo pedido
             Pedidos nuevoPedido = new Pedidos
             {
-                facultad = txtFacultad.Text,
-                producto = cantidad,
-                descripcion = txtDescripcion.Text,
-                data = dtpFecha.Value,
-                cantidad = txtCantidad.Text
+                Facultad = txtFacultad.Text,
+                Nombre = txtNombre.Text,
+                Descripcion = txtDescripcion.Text,
+                Fecha = dtpFecha.Value,
+                Cantidad = cantidad
             };
             solicitudes.Enqueue(nuevoPedido);//Agrega el nuevo pedido a la cola
             GuardarEnJson();//Guarda la cola actualizada en el archivo JSON
@@ -58,11 +58,11 @@ namespace TP_LP2
             }
             Pedidos primerPedido = solicitudes.Peek(); // Obtiene el primer pedido sin eliminarlo
             //cargar los datos del primer pedido en los campos de texto para su edición
-            txtNombre.Text = primerPedido.descripcion; // Asumiendo que el nombre del producto se almacena en la descripción
-            txtCantidad.Text = primerPedido.cantidad; // Asumiendo que la cantidad se almacena en el campo cantidad
-            txtDescripcion.Text = primerPedido.descripcion; // Asumiendo que la descripción se almacena en el campo descripción
-            txtFacultad.Text = primerPedido.facultad; // Asumiendo que la facultad se almacena en el campo facultad
-            dtpFecha.Value = primerPedido.data; // Asumiendo que la fecha se almacena en el campo data
+            txtNombre.Text = primerPedido.Nombre; // Asumiendo que el nombre del producto se almacena en la descripción
+            txtCantidad.Text = primerPedido.Cantidad.ToString(); // Asumiendo que la cantidad se almacena en el campo cantidad
+            txtDescripcion.Text = primerPedido.Descripcion; // Asumiendo que la descripción se almacena en el campo descripción
+            txtFacultad.Text = primerPedido.Facultad; // Asumiendo que la facultad se almacena en el campo facultad
+            dtpFecha.Value = primerPedido.Fecha; // Asumiendo que la fecha se almacena en el campo data
             MessageBox.Show("Edite los campos y haga clic en 'Registrar' para actualizar el pedido.");
 
         }

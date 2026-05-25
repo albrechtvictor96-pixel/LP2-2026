@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
+using TP_LP2.COMPRAS;
 
 namespace TP_LP2
 {
@@ -91,12 +92,18 @@ namespace TP_LP2
                 if (usuarioEncontrado != null)
                 {
                     MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    FormMenuPrincipal menu = new FormMenuPrincipal();
+                    this.Hide(); // Esconde la pantalla de Login para que no moleste
+                    menu.ShowDialog(); // Muestra el Menú Principal
+                    this.Close(); // Cierra definitivamente el Login al salir del menú
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o contraseña incorrectos", "Error");
                 }
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

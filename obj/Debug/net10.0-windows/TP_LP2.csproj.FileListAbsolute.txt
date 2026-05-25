@@ -38,3 +38,5 @@ C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.FormLogin.resources
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.FormGestionUsuarios.resources
 C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.RegistroCompras.resources
+C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.FormAprobacion.resources
+C:\Users\Victor Albrecht\source\repos\LP2-2026\obj\Debug\net10.0-windows\TP_LP2.COMPRAS.FormMenuPrincipal.resources
