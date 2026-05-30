@@ -10,7 +10,7 @@ namespace TP_LP2
             public DateTime fecha { get; set; }
             public string descripcion { get; set; }
             public string facultad { get; set; }
-            public string estado { get; set; } = "PENDIENTE";
+            public string estado { get; set; } = "Pendiente";
 
     }
 }

@@ -91,9 +91,9 @@ namespace TP_LP2
                 return;
             }
 
-            Pedidos pedidoProcesado = colaPedidos.Dequeue();
-            pedidoProcesado.descripcion = $"[{estado}] " + pedidoProcesado.descripcion;
-            pilaHistorial.Push(pedidoProcesado);
+            Pedidos pedidoProcesado = colaPedidos.Dequeue();//sacamos el pedido de la cola
+            pedidoProcesado.descripcion = estado;//le asignamos el nuevo estado(aprovado o rechazado)
+            pilaHistorial.Push(pedidoProcesado);//lo metemos a la pila del historial
 
             GuardarTodo();
            
@@ -107,12 +107,13 @@ namespace TP_LP2
         {
             try
             {
-                // Pasamos la cola y la pila a listas para poder serializar sin drama
-                var listaCola = new List<Pedidos>(colaPedidos);
-                var listaPila = new List<Pedidos>(pilaHistorial);
-
-                File.WriteAllText(rutaCola, JsonSerializer.Serialize(listaCola, new JsonSerializerOptions { WriteIndented = true }));
-                File.WriteAllText(rutaHistorial, JsonSerializer.Serialize(listaPila, new JsonSerializerOptions { WriteIndented = true }));
+               var listaCola = new List <Pedidos>(colaPedidos);
+                string jsonCola = JsonSerializer.Serialize(listaCola, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(rutaCola, jsonCola);
+                var listaHistorial = pilaHistorial.ToArray();
+                Array.Reverse(listaHistorial); // Invertimos para guardar en orden correcto
+                string jsonHistorial = JsonSerializer.Serialize(listaHistorial, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(rutaHistorial, jsonHistorial);
             }
             catch (Exception ex)
             {
@@ -125,7 +126,7 @@ namespace TP_LP2
             lstHistorial.Items.Clear();
             foreach (var ped in pilaHistorial)
             {
-                lstHistorial.Items.Add($"{ped.fecha.ToShortDateString()} - {ped.nombre} - Cant: {ped.cantidad} ({ped.descripcion})");
+                lstHistorial.Items.Add($"[{ped.estado} {ped.fecha:dd/MM/yyyy}] {ped.nombre} - {ped.cantidad} unidades - {ped.descripcion}");
             }
         }
         private void CargarHistorialDesdeJson() //carga el historial desde el archivo JSON, asegurando que se mantenga el orden correcto en la pila
