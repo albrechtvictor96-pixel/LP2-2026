@@ -17,12 +17,13 @@ namespace TP_LP2
         public FormAprobacion()
         {
             InitializeComponent();
-            CargarDatos();
-            MostrarSiguienteEnCola();
-            ActualizarListBoxHistorial();
+            CargarDatos();//lee archivos de compras json
+            MostrarSiguienteEnCola();//muestra el siguiente pedido en la cola
+            ActualizarListBoxHistorial();//llena el listbox con el historial de pedidos procesados
+            CargarHistorialDesdeJson();//carga el historial desde el archivo JSON
         }
 
-        private void CargarDatos()
+        private void CargarDatos()//carga los datos de la cola de pedidos y el historial desde los archivos JSON, si existen
         {
             if (File.Exists(rutaCola))
             {
@@ -55,14 +56,14 @@ namespace TP_LP2
             }
         }
 
-        private void MostrarSiguienteEnCola()
+        private void MostrarSiguienteEnCola()//muestra el siguiente pedido en la cola en los campos de texto correspondientes, o los limpia si no hay pedidos pendientes
         {
             if (colaPedidos.Count > 0)
             {
                 Pedidos siguiente = colaPedidos.Peek();
-                txtAprobNombre.Text = siguiente.Nombre;
-                txtAprobDescripcion.Text = siguiente.Descripcion;
-                txtAprobCantidad.Text = siguiente.Cantidad.ToString();
+                txtAprobNombre.Text = siguiente.nombre;
+                txtAprobDescripcion.Text = siguiente.descripcion;
+                txtAprobCantidad.Text = siguiente.cantidad.ToString();
             }
             else
             {
@@ -72,17 +73,17 @@ namespace TP_LP2
             }
         }
 
-        private void BtnAprobar_Click(object sender, EventArgs e)
+        private void BtnAprobar_Click(object sender, EventArgs e)//procesa el pedido actual con estado "APROBADO"
         {
             ProcesarPedido("APROBADO");
         }
 
-        private void BtnRechazar_Click(object sender, EventArgs e)
+        private void BtnRechazar_Click(object sender, EventArgs e)//procesa el pedido actual con estado "RECHAZADO"
         {
             ProcesarPedido("RECHAZADO");
         }
 
-        private void ProcesarPedido(string estado)
+        private void ProcesarPedido(string estado) //procesa el pedido actual, lo mueve a la pila de historial con el estado correspondiente y guarda los cambios en los archivos JSON
         {
             if (colaPedidos.Count == 0)
             {
@@ -91,12 +92,13 @@ namespace TP_LP2
             }
 
             Pedidos pedidoProcesado = colaPedidos.Dequeue();
-            pedidoProcesado.Descripcion = $"[{estado}] " + pedidoProcesado.Descripcion;
+            pedidoProcesado.descripcion = $"[{estado}] " + pedidoProcesado.descripcion;
             pilaHistorial.Push(pedidoProcesado);
 
             GuardarTodo();
+           
 
-            MessageBox.Show($"Pedido de {pedidoProcesado.Nombre} fue {estado}.", "Éxito");
+            MessageBox.Show($"Pedido de {pedidoProcesado.nombre} fue {estado}.", "Éxito");
             MostrarSiguienteEnCola();
             ActualizarListBoxHistorial();
         }
@@ -118,12 +120,31 @@ namespace TP_LP2
             }
         }
 
-        private void ActualizarListBoxHistorial()
+        private void ActualizarListBoxHistorial()//actualiza el listbox con el historial de pedidos procesados, mostrando la fecha, nombre, cantidad y descripción de cada pedido
         {
             lstHistorial.Items.Clear();
             foreach (var ped in pilaHistorial)
             {
-                lstHistorial.Items.Add($"{ped.Fecha.ToShortDateString()} - {ped.Nombre} - Cant: {ped.Cantidad} ({ped.Descripcion})");
+                lstHistorial.Items.Add($"{ped.fecha.ToShortDateString()} - {ped.nombre} - Cant: {ped.cantidad} ({ped.descripcion})");
+            }
+        }
+        private void CargarHistorialDesdeJson() //carga el historial desde el archivo JSON, asegurando que se mantenga el orden correcto en la pila
+        {
+            string rutaHistorial = Path.Combine(Application.StartupPath, "historial.json");
+            if (File.Exists(rutaHistorial))
+            {
+                try
+                {
+                    string json = File.ReadAllText(rutaHistorial);
+                    var lista = System.Text.Json.JsonSerializer.Deserialize<List<Pedidos>>(json);
+                    if (lista != null)
+                    {
+                        // Invertimos la lista para que al meterla a la pila mantenga el orden original LIFO
+                        lista.Reverse();
+                        pilaHistorial = new Stack<Pedidos>(lista);
+                    }
+                }
+                catch { }
             }
         }
     }
