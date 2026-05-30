@@ -19,8 +19,8 @@ namespace TP_LP2
         private string rutaJson = Path.Combine(Application.StartupPath, "compras.json");
 
         private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            //Validacion de entradas
+        { 
+            // 1. Validacion de entradas 
             if (string.IsNullOrWhiteSpace(txtFacultad.Text) ||
                 string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
@@ -29,21 +29,57 @@ namespace TP_LP2
                 MessageBox.Show("Por favor, complete todos los campos.");
                 return;
             }
-            //validacion de cantidad
+
+            // 2. Validacion de cantidad 
             if (!int.TryParse(txtCantidad.Text, out int cantidad) || cantidad <= 0)
             {
                 MessageBox.Show("Ingrese una cantidad válida (número entero positivo).");
                 return;
             }
-            //Creacion de nuevo pedido
+
+            // 3. Creacion de nuevo pedido 
             Pedidos nuevoPedido = new Pedidos
             {
                 facultad = txtFacultad.Text,
                 nombre = txtNombre.Text,
                 descripcion = txtDescripcion.Text,
                 fecha = dtpFecha.Value,
-                cantidad = cantidad
+                cantidad = cantidad,
+                estado = "Pendiente" // para que la pantalla de aprobación sepa que está esperando
             };
+
+            try
+            {
+                // 1. Metemos el pedido a la estructura de la Cola
+                // (Si tu cola en esta pantalla se llama 'colaPedidos', cambialo por ese nombre)
+                solicitudes.Enqueue(nuevoPedido);
+
+                // 2. Pasamos la cola a una lista para que se pueda serializar correctamente
+                var listaParaGuardar = new List<Pedidos>(solicitudes);
+
+                // 3. Lo convertimos a formato texto JSON ordenado
+                var opciones = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
+                string jsonTexto = System.Text.Json.JsonSerializer.Serialize(listaParaGuardar, opciones);
+
+                // 4. Definimos la ruta del archivo y lo grabamos en el disco duro
+                string rutaDestino = Path.Combine(Application.StartupPath, "compras.json");
+                File.WriteAllText(rutaDestino, jsonTexto);
+
+                // 5. Avisamos al usuario que funcionó
+                MessageBox.Show("Pedido registrado con éxito y guardado en el archivo.", "Éxito");
+
+                // 6. Limpiamos los cuadros para el siguiente pedido
+                txtFacultad.Clear();
+                txtNombre.Clear();
+                txtDescripcion.Clear();
+                txtCantidad.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al guardar en el JSON: " + ex.Message, "Error");
+            }
+        
+    
             solicitudes.Enqueue(nuevoPedido);//Agrega el nuevo pedido a la cola
             GuardarEnJson();//Guarda la cola actualizada en el archivo JSON
             MessageBox.Show("Pedido registrado exitosamente.");

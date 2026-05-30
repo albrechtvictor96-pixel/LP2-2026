@@ -18,9 +18,9 @@ namespace TP_LP2
         {
             InitializeComponent();
             CargarDatos();//lee archivos de compras json
-            MostrarSiguienteEnCola();//muestra el siguiente pedido en la cola
-            ActualizarListBoxHistorial();//llena el listbox con el historial de pedidos procesados
             CargarHistorialDesdeJson();//carga el historial desde el archivo JSON
+            MostrarSiguienteEnCola();//muestra el siguiente pedido en la cola
+            ActualizarListBoxHistorial();//llena el listbox con el historial de pedidos procesado
         }
 
         private void CargarDatos()//carga los datos de la cola de pedidos y el historial desde los archivos JSON, si existen
@@ -54,6 +54,7 @@ namespace TP_LP2
                 }
                 catch { }
             }
+            CargarHistorialDesdeJson();//llamaos al metodo para que cargue el historial desde el archivo JSON, asegurando que se mantenga el orden correcto en la pila
         }
 
         private void MostrarSiguienteEnCola()//muestra el siguiente pedido en la cola en los campos de texto correspondientes, o los limpia si no hay pedidos pendientes
@@ -73,16 +74,6 @@ namespace TP_LP2
             }
         }
 
-        private void BtnAprobar_Click(object sender, EventArgs e)//procesa el pedido actual con estado "APROBADO"
-        {
-            ProcesarPedido("APROBADO");
-        }
-
-        private void BtnRechazar_Click(object sender, EventArgs e)//procesa el pedido actual con estado "RECHAZADO"
-        {
-            ProcesarPedido("RECHAZADO");
-        }
-
         private void ProcesarPedido(string estado) //procesa el pedido actual, lo mueve a la pila de historial con el estado correspondiente y guarda los cambios en los archivos JSON
         {
             if (colaPedidos.Count == 0)
@@ -92,11 +83,10 @@ namespace TP_LP2
             }
 
             Pedidos pedidoProcesado = colaPedidos.Dequeue();//sacamos el pedido de la cola
-            pedidoProcesado.descripcion = estado;//le asignamos el nuevo estado(aprovado o rechazado)
+            pedidoProcesado.estado = estado;//le asignamos el nuevo estado(aprovado o rechazado)
             pilaHistorial.Push(pedidoProcesado);//lo metemos a la pila del historial
 
             GuardarTodo();
-           
 
             MessageBox.Show($"Pedido de {pedidoProcesado.nombre} fue {estado}.", "Éxito");
             MostrarSiguienteEnCola();
@@ -107,7 +97,7 @@ namespace TP_LP2
         {
             try
             {
-               var listaCola = new List <Pedidos>(colaPedidos);
+                var listaCola = new List<Pedidos>(colaPedidos);
                 string jsonCola = JsonSerializer.Serialize(listaCola, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(rutaCola, jsonCola);
                 var listaHistorial = pilaHistorial.ToArray();
@@ -147,6 +137,16 @@ namespace TP_LP2
                 }
                 catch { }
             }
+        }
+
+        private void btnAprobar_Click(object sender, EventArgs e)
+        {
+            ProcesarPedido("Aprobado");
+        }
+
+        private void btnRechazar_Click(object sender, EventArgs e)
+        {
+            ProcesarPedido("Rechazado");
         }
     }
 }

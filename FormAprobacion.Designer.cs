@@ -64,9 +64,9 @@
             // lstHistorial
             // 
             lstHistorial.FormattingEnabled = true;
-            lstHistorial.Location = new Point(460, 112);
+            lstHistorial.Location = new Point(260, 97);
             lstHistorial.Name = "lstHistorial";
-            lstHistorial.Size = new Size(252, 144);
+            lstHistorial.Size = new Size(509, 224);
             lstHistorial.TabIndex = 3;
             // 
             // btnAprobar
@@ -77,6 +77,7 @@
             btnAprobar.TabIndex = 4;
             btnAprobar.Text = "Aprobar Pedidos";
             btnAprobar.UseVisualStyleBackColor = true;
+            btnAprobar.Click += btnAprobar_Click;
             // 
             // btnRechazar
             // 
@@ -86,6 +87,7 @@
             btnRechazar.TabIndex = 5;
             btnRechazar.Text = "Rechazar Pedidos";
             btnRechazar.UseVisualStyleBackColor = true;
+            btnRechazar.Click += btnRechazar_Click;
             // 
             // label1
             // 
