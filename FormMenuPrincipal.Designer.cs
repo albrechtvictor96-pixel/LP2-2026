@@ -58,7 +58,7 @@
             btnModuloAprovacion.Name = "btnModuloAprovacion";
             btnModuloAprovacion.Size = new Size(277, 78);
             btnModuloAprovacion.TabIndex = 2;
-            btnModuloAprovacion.Text = "Procesar y Aprovar Pedidos";
+            btnModuloAprovacion.Text = "Procesar y Aprobar Pedidos";
             btnModuloAprovacion.UseVisualStyleBackColor = true;
             btnModuloAprovacion.Click += btnModuloAprovacion_Click;
             // 

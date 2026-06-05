@@ -148,5 +148,29 @@ namespace TP_LP2
         {
             ProcesarPedido("Rechazado");
         }
+
+        private void btnDeshacerAprovacion_Click(object sender, EventArgs e)//Deshacer la ultima aprovacion, moviendo el pedido del historial de vuelta a la cola de pedidos pendientes, y actualizando los archivos JSON
+        {
+            if (pilaHistorial.Count == 0)
+            {
+                MessageBox.Show("No hay acciones para deshacer.", "Aviso");
+                return;
+            }
+
+            Pedidos ultimoProcesado = pilaHistorial.Peek();//obtenemos el último pedido procesado sin sacarlo de la pila
+            if (ultimoProcesado.estado != "Aprobado")
+            {
+                MessageBox.Show("Solo se pueden deshacer aprobaciones.", "Aviso");//si el último pedido procesado no fue aprobado, mostramos un mensaje de aviso y no hacemos nada
+                return;
+            }
+            pilaHistorial.Pop();//sacamos el pedido de la pila del historial
+            ultimoProcesado.estado = "Pendiente";//lo marcamos como pendiente para que vuelva a aparecer en la cola
+            colaPedidos.Enqueue(ultimoProcesado);//lo metemos de nuevo a la cola de pedidos pendientes
+            GuardarTodo();
+            MessageBox.Show($"Se ha deshecho la última acción. Pedido de {ultimoProcesado.nombre} vuelve a estar pendiente.", "Éxito");
+            MostrarSiguienteEnCola();
+            ActualizarListBoxHistorial();
+        }
+            
     }
 }

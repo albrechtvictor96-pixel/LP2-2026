@@ -38,6 +38,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            btnDeshacerAprovacion = new Button();
             SuspendLayout();
             // 
             // txtAprobNombre
@@ -125,11 +126,22 @@
             label4.TabIndex = 9;
             label4.Text = "Historial";
             // 
+            // btnDeshacerAprovacion
+            // 
+            btnDeshacerAprovacion.Location = new Point(46, 355);
+            btnDeshacerAprovacion.Name = "btnDeshacerAprovacion";
+            btnDeshacerAprovacion.Size = new Size(236, 53);
+            btnDeshacerAprovacion.TabIndex = 10;
+            btnDeshacerAprovacion.Text = "Deshacer Ultima Aprobacion";
+            btnDeshacerAprovacion.UseVisualStyleBackColor = true;
+            btnDeshacerAprovacion.Click += btnDeshacerAprovacion_Click;
+            // 
             // FormAprobacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDeshacerAprovacion);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -158,5 +170,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Button btnDeshacerAprovacion;
     }
 }
