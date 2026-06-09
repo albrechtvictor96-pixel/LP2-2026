@@ -19,7 +19,7 @@ namespace TP_LP2
             InitializeComponent();
             CargarDatos();//lee archivos de compras json
             CargarHistorialDesdeJson();//carga el historial desde el archivo JSON
-            MostrarSiguienteEnCola();//muestra el siguiente pedido en la cola
+            ActualizarGridPendientes();//actualiza el datagridview con los pedidos pendientes en la cola
             ActualizarListBoxHistorial();//llena el listbox con el historial de pedidos procesado
         }
 
@@ -56,24 +56,22 @@ namespace TP_LP2
             }
             CargarHistorialDesdeJson();//llamaos al metodo para que cargue el historial desde el archivo JSON, asegurando que se mantenga el orden correcto en la pila
         }
-
-        private void MostrarSiguienteEnCola()//muestra el siguiente pedido en la cola en los campos de texto correspondientes, o los limpia si no hay pedidos pendientes
+        private void ActualizarGridPendientes()
         {
-            if (colaPedidos.Count > 0)
+            dgvPendientes.DataSource = null;
+            if (colaPedidos != null && colaPedidos.Count > 0)
             {
-                Pedidos siguiente = colaPedidos.Peek();
-                txtAprobNombre.Text = siguiente.nombre;
-                txtAprobDescripcion.Text = siguiente.descripcion;
-                txtAprobCantidad.Text = siguiente.cantidad.ToString();
-            }
-            else
-            {
-                txtAprobNombre.Clear();
-                txtAprobDescripcion.Clear();
-                txtAprobCantidad.Clear();
+               var listaPendientes = new List<Pedidos>(colaPedidos);
+                dgvPendientes.DataSource = listaPendientes;
+                if (dgvPendientes.Columns["nombre"] != null) dgvPendientes.Columns["nombre"].HeaderText = "Solicitante";
+                if (dgvPendientes.Columns["cantidad"] != null) dgvPendientes.Columns["cantidad"].HeaderText = "Cantidad";
+                if (dgvPendientes.Columns["descripcion"] != null) dgvPendientes.Columns["descripcion"].HeaderText = "Descripción";
+                if (dgvPendientes.Columns["facultad"] != null) dgvPendientes.Columns["facultad"].HeaderText = "Facultad";
+                if (dgvPendientes.Columns["fecha"] != null) dgvPendientes.Columns["fecha"].HeaderText = "Fecha";
+                if (dgvPendientes.Columns["estado"] != null) dgvPendientes.Columns["estado"].HeaderText = "Estado";
+
             }
         }
-
         private void ProcesarPedido(string estado) //procesa el pedido actual, lo mueve a la pila de historial con el estado correspondiente y guarda los cambios en los archivos JSON
         {
             if (colaPedidos.Count == 0)
@@ -89,8 +87,8 @@ namespace TP_LP2
             GuardarTodo();
 
             MessageBox.Show($"Pedido de {pedidoProcesado.nombre} fue {estado}.", "Éxito");
-            MostrarSiguienteEnCola();
-            ActualizarListBoxHistorial();
+            ActualizarGridPendientes();//Después de procesar el pedido, actualizamos el datagridview para reflejar los cambios en la cola de pedidos pendientes
+            ActualizarListBoxHistorial();//y actualizamos el listbox para mostrar el nuevo pedido procesado en el historial
         }
 
         private void GuardarTodo()
@@ -168,7 +166,7 @@ namespace TP_LP2
             colaPedidos.Enqueue(ultimoProcesado);//lo metemos de nuevo a la cola de pedidos pendientes
             GuardarTodo();
             MessageBox.Show($"Se ha deshecho la última acción. Pedido de {ultimoProcesado.nombre} vuelve a estar pendiente.", "Éxito");
-            MostrarSiguienteEnCola();
+            ActualizarGridPendientes();
             ActualizarListBoxHistorial();
         }
             
