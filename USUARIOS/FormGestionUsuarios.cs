@@ -15,6 +15,7 @@ namespace TP_LP2
         public FormGestionUsuarios()
         {
             InitializeComponent();
+            CargarUsuariosEnGrilla();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -78,7 +79,9 @@ namespace TP_LP2
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            FormLogin pantallaLogin = new FormLogin();// Crear una instancia del formulario de login
+            pantallaLogin.Show();// Mostrar el formulario de login
+            this.Close();//Cerrar el formulario actual de gestión de usuarios
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -106,9 +109,37 @@ namespace TP_LP2
             // Abrir el formulario de registro para agregar un nuevo usuario
             AgregarUsuario pantallaRegistro = new AgregarUsuario();
             // Mostrar el formulario de registro
-            pantallaRegistro.Show();
+            pantallaRegistro.ShowDialog();
             // Recargar la tabla de usuarios después de cerrar el formulario de registro
             CargarUsuariosEnTabla();
+            CargarUsuariosEnGrilla();
+        }
+        private void CargarUsuariosEnGrilla()
+        {
+            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
+            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
+            if (File.Exists(rutaJson))
+            {
+                try
+                {
+                    string json = File.ReadAllText(rutaJson);
+                    if (!string.IsNullOrWhiteSpace(json))
+                    {
+                        List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json);
+                        dgvUsuarios.DataSource = usuarios;
+                        dgvUsuarios.Update();
+                        dgvUsuarios.Refresh();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los usuarios: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de usuarios.");
+            }
         }
     }
 }
