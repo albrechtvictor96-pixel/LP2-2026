@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             btnModuloPedidos = new Button();
-            btnModuloAprovacion = new Button();
+            btnModuloAprobacion = new Button();
             SuspendLayout();
             // 
             // label1
@@ -52,26 +52,27 @@
             btnModuloPedidos.UseVisualStyleBackColor = true;
             btnModuloPedidos.Click += btnModuloPedidos_Click;
             // 
-            // btnModuloAprovacion
+            // btnModuloAprobacion
             // 
-            btnModuloAprovacion.Location = new Point(436, 195);
-            btnModuloAprovacion.Name = "btnModuloAprovacion";
-            btnModuloAprovacion.Size = new Size(277, 78);
-            btnModuloAprovacion.TabIndex = 2;
-            btnModuloAprovacion.Text = "Procesar y Aprobar Pedidos";
-            btnModuloAprovacion.UseVisualStyleBackColor = true;
-            btnModuloAprovacion.Click += btnModuloAprovacion_Click;
+            btnModuloAprobacion.Location = new Point(436, 195);
+            btnModuloAprobacion.Name = "btnModuloAprobacion";
+            btnModuloAprobacion.Size = new Size(277, 78);
+            btnModuloAprobacion.TabIndex = 2;
+            btnModuloAprobacion.Text = "Procesar y Aprobar Pedidos";
+            btnModuloAprobacion.UseVisualStyleBackColor = true;
+            btnModuloAprobacion.Click += btnModuloAprobacion_Click;
             // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnModuloAprovacion);
+            Controls.Add(btnModuloAprobacion);
             Controls.Add(btnModuloPedidos);
             Controls.Add(label1);
             Name = "FormMenuPrincipal";
             Text = "FormMenuPrincipal";
+            Load += FormMenuPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -80,6 +81,6 @@
 
         private Label label1;
         private Button btnModuloPedidos;
-        private Button btnModuloAprovacion;
+        private Button btnModuloAprobacion;
     }
 }

@@ -36,7 +36,7 @@
             txtApellido = new TextBox();
             txtNombre = new TextBox();
             txtPassword = new TextBox();
-            txtRol = new ComboBox();
+            cmbRol = new ComboBox();
             label6 = new Label();
             botonok = new Button();
             botoncancel = new Button();
@@ -109,14 +109,14 @@
             txtPassword.Size = new Size(321, 27);
             txtPassword.TabIndex = 8;
             // 
-            // txtRol
+            // cmbRol
             // 
-            txtRol.FormattingEnabled = true;
-            txtRol.Items.AddRange(new object[] { "Administrador", "Directivo", "Funcionario" });
-            txtRol.Location = new Point(198, 219);
-            txtRol.Name = "txtRol";
-            txtRol.Size = new Size(168, 28);
-            txtRol.TabIndex = 9;
+            cmbRol.FormattingEnabled = true;
+            cmbRol.Items.AddRange(new object[] { "Administrador", "Directivo", "Funcionario" });
+            cmbRol.Location = new Point(198, 219);
+            cmbRol.Name = "cmbRol";
+            cmbRol.Size = new Size(168, 28);
+            cmbRol.TabIndex = 9;
             // 
             // label6
             // 
@@ -163,7 +163,7 @@
             Controls.Add(botoncancel);
             Controls.Add(botonok);
             Controls.Add(label6);
-            Controls.Add(txtRol);
+            Controls.Add(cmbRol);
             Controls.Add(txtPassword);
             Controls.Add(txtNombre);
             Controls.Add(txtApellido);
@@ -188,7 +188,7 @@
         private TextBox txtApellido;
         private TextBox txtNombre;
         private TextBox txtPassword;
-        private ComboBox txtRol;
+        private ComboBox cmbRol;
         private Label label6;
         private Button botonok;
         private Button botoncancel;

@@ -76,7 +76,7 @@
             btningresar.TabIndex = 4;
             btningresar.Text = "Ingresar";
             btningresar.UseVisualStyleBackColor = true;
-            btningresar.Click += btningresar_Click_1;
+            btningresar.Click += btnIngresar_Click_1;
             // 
             // btnGestion
             // 

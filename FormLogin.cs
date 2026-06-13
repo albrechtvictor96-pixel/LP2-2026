@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,24 +15,23 @@ namespace TP_LP2
             InitializeComponent();
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void btnIngresar_Click_1(object sender, EventArgs e)
         {
             string usuarioIngresado = txtusuario.Text.Trim();
             string passwordIngresada = txtpassword.Text.Trim();
 
             if (string.IsNullOrEmpty(usuarioIngresado) || string.IsNullOrEmpty(passwordIngresada))
             {
-                MessageBox.Show("Por favor, ingrese un usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, ingrese su usuario y contraseÃ±a.", "Campos vacÃ­os");
                 return;
             }
 
-            // Misma ruta inteligente
             string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
             string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
 
             if (!File.Exists(rutaJson))
             {
-                MessageBox.Show("No hay usuarios registrados. Regístrate primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay usuarios registrados en el sistema.", "Error");
                 return;
             }
 
@@ -43,70 +42,30 @@ namespace TP_LP2
 
                 Usuario usuarioEncontrado = usuarios.FirstOrDefault(u =>
                     u.Username.Equals(usuarioIngresado, StringComparison.OrdinalIgnoreCase) &&
-                    u.Password == passwordIngresada);
+                    u.Password == passwordIngresada
+                );
 
                 if (usuarioEncontrado != null)
                 {
-                    MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void btningresar_Click_1(object sender, EventArgs e)
-        {
-            string usuarioIngresado = txtusuario.Text.Trim();
-            string passwordIngresada = txtpassword.Text.Trim();
+                    // ðŸš€ ASIGNACIÃ“N DIRECTA: Guardamos el rol del JSON en nuestra variable comÃºn
+                    Usuario.RolUsuarioLogueado = usuarioEncontrado.Rol;
 
-            if (string.IsNullOrEmpty(usuarioIngresado) || string.IsNullOrEmpty(passwordIngresada))
-            {
-                MessageBox.Show("Por favor, ingrese un usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                    MessageBox.Show($"Â¡Bienvenido, {usuarioEncontrado.Nombre}! Entrando como {Usuario.RolUsuarioLogueado}.", "Ã‰xito");
 
-            // Ruta inteligente
-            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
-            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
-
-            if (!File.Exists(rutaJson))
-            {
-                MessageBox.Show("No hay usuarios registrados. Regístrate primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                string json = File.ReadAllText(rutaJson);
-                List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>();
-
-                Usuario usuarioEncontrado = usuarios.FirstOrDefault(u =>
-                    u.Username.Equals(usuarioIngresado, StringComparison.OrdinalIgnoreCase) &&
-                    u.Password == passwordIngresada);
-
-                if (usuarioEncontrado != null)
-                {
-                    MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    // Abrimos el menÃº principal completamente vacÃ­o y normal, como a vos te gusta
                     FormMenuPrincipal menu = new FormMenuPrincipal();
-                    this.Hide(); // Esconde la pantalla de Login para que no moleste
-                    menu.ShowDialog(); // Muestra el Menú Principal
-                    this.Close(); // Cierra definitivamente el Login al salir del menú
+                    menu.Show();
+
+                    this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos", "Error");
+                    MessageBox.Show("Usuario o contraseÃ±a incorrectos.", "Acceso Denegado");
                 }
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al leer los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al iniciar sesiÃ³n: " + ex.Message, "Error");
             }
         }
 

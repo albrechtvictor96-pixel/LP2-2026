@@ -10,5 +10,7 @@ namespace TP_LP2
         public string Apellido { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
+        public string Rol { get; set; } = string.Empty;
+        public static string RolUsuarioLogueado { get; set; } = string.Empty; // Variable común para almacenar el rol del usuario logueado
     }
 }
