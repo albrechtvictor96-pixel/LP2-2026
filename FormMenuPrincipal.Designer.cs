@@ -31,6 +31,7 @@
             label1 = new Label();
             btnModuloPedidos = new Button();
             btnModuloAprobacion = new Button();
+            btnVolver = new Button();
             SuspendLayout();
             // 
             // label1
@@ -44,9 +45,9 @@
             // 
             // btnModuloPedidos
             // 
-            btnModuloPedidos.Location = new Point(122, 195);
+            btnModuloPedidos.Location = new Point(118, 167);
             btnModuloPedidos.Name = "btnModuloPedidos";
-            btnModuloPedidos.Size = new Size(253, 78);
+            btnModuloPedidos.Size = new Size(267, 106);
             btnModuloPedidos.TabIndex = 1;
             btnModuloPedidos.Text = "Registrar Pedidos de Compras";
             btnModuloPedidos.UseVisualStyleBackColor = true;
@@ -54,19 +55,30 @@
             // 
             // btnModuloAprobacion
             // 
-            btnModuloAprobacion.Location = new Point(436, 195);
+            btnModuloAprobacion.Location = new Point(420, 167);
             btnModuloAprobacion.Name = "btnModuloAprobacion";
-            btnModuloAprobacion.Size = new Size(277, 78);
+            btnModuloAprobacion.Size = new Size(277, 106);
             btnModuloAprobacion.TabIndex = 2;
             btnModuloAprobacion.Text = "Procesar y Aprobar Pedidos";
             btnModuloAprobacion.UseVisualStyleBackColor = true;
             btnModuloAprobacion.Click += btnModuloAprobacion_Click;
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(355, 343);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(119, 41);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnVolver);
             Controls.Add(btnModuloAprobacion);
             Controls.Add(btnModuloPedidos);
             Controls.Add(label1);
@@ -82,5 +94,6 @@
         private Label label1;
         private Button btnModuloPedidos;
         private Button btnModuloAprobacion;
+        private Button btnVolver;
     }
 }

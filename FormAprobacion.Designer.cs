@@ -35,22 +35,23 @@
             btnDeshacerAprovacion = new Button();
             dgvPendientes = new DataGridView();
             label1 = new Label();
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPendientes).BeginInit();
             SuspendLayout();
             // 
             // lstHistorial
             // 
             lstHistorial.FormattingEnabled = true;
-            lstHistorial.Location = new Point(379, 97);
+            lstHistorial.Location = new Point(379, 81);
             lstHistorial.Name = "lstHistorial";
             lstHistorial.Size = new Size(409, 244);
             lstHistorial.TabIndex = 3;
             // 
             // btnAprobar
             // 
-            btnAprobar.Location = new Point(297, 372);
+            btnAprobar.Location = new Point(188, 365);
             btnAprobar.Name = "btnAprobar";
-            btnAprobar.Size = new Size(193, 66);
+            btnAprobar.Size = new Size(193, 50);
             btnAprobar.TabIndex = 4;
             btnAprobar.Text = "Aprobar Pedidos";
             btnAprobar.UseVisualStyleBackColor = true;
@@ -58,9 +59,9 @@
             // 
             // btnRechazar
             // 
-            btnRechazar.Location = new Point(531, 372);
+            btnRechazar.Location = new Point(387, 365);
             btnRechazar.Name = "btnRechazar";
-            btnRechazar.Size = new Size(196, 66);
+            btnRechazar.Size = new Size(196, 50);
             btnRechazar.TabIndex = 5;
             btnRechazar.Text = "Rechazar Pedidos";
             btnRechazar.UseVisualStyleBackColor = true;
@@ -69,7 +70,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(574, 59);
+            label4.Location = new Point(574, 41);
             label4.Name = "label4";
             label4.Size = new Size(69, 20);
             label4.TabIndex = 9;
@@ -77,9 +78,9 @@
             // 
             // btnDeshacerAprovacion
             // 
-            btnDeshacerAprovacion.Location = new Point(46, 372);
+            btnDeshacerAprovacion.Location = new Point(12, 365);
             btnDeshacerAprovacion.Name = "btnDeshacerAprovacion";
-            btnDeshacerAprovacion.Size = new Size(210, 66);
+            btnDeshacerAprovacion.Size = new Size(170, 50);
             btnDeshacerAprovacion.TabIndex = 10;
             btnDeshacerAprovacion.Text = "Deshacer Ultima Aprobacion";
             btnDeshacerAprovacion.UseVisualStyleBackColor = true;
@@ -90,7 +91,7 @@
             dgvPendientes.BackgroundColor = SystemColors.Window;
             dgvPendientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPendientes.GridColor = SystemColors.ControlText;
-            dgvPendientes.Location = new Point(0, 97);
+            dgvPendientes.Location = new Point(2, 81);
             dgvPendientes.Name = "dgvPendientes";
             dgvPendientes.RowHeadersWidth = 51;
             dgvPendientes.Size = new Size(371, 244);
@@ -99,17 +100,28 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(99, 59);
+            label1.Location = new Point(91, 41);
             label1.Name = "label1";
             label1.Size = new Size(136, 20);
             label1.TabIndex = 12;
             label1.Text = "Pedidos Pendientes";
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(601, 365);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(160, 50);
+            btnVolver.TabIndex = 13;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormAprobacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnVolver);
             Controls.Add(label1);
             Controls.Add(dgvPendientes);
             Controls.Add(btnDeshacerAprovacion);
@@ -132,5 +144,6 @@
         private Button btnDeshacerAprovacion;
         private DataGridView dgvPendientes;
         private Label label1;
+        private Button btnVolver;
     }
 }

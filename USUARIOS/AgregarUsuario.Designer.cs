@@ -41,12 +41,14 @@
             botonok = new Button();
             botoncancel = new Button();
             txtUsuario = new TextBox();
+            txtCedula = new TextBox();
+            label7 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(48, 29);
+            label1.Location = new Point(48, 9);
             label1.Name = "label1";
             label1.Size = new Size(117, 20);
             label1.TabIndex = 0;
@@ -55,7 +57,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(74, 80);
+            label2.Location = new Point(74, 55);
             label2.Name = "label2";
             label2.Size = new Size(64, 20);
             label2.TabIndex = 1;
@@ -64,7 +66,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(74, 145);
+            label3.Location = new Point(74, 108);
             label3.Name = "label3";
             label3.Size = new Size(66, 20);
             label3.TabIndex = 2;
@@ -90,14 +92,14 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(198, 138);
+            txtApellido.Location = new Point(198, 108);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(321, 27);
             txtApellido.TabIndex = 5;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(198, 73);
+            txtNombre.Location = new Point(198, 48);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(321, 27);
             txtNombre.TabIndex = 7;
@@ -154,11 +156,29 @@
             txtUsuario.Size = new Size(321, 27);
             txtUsuario.TabIndex = 13;
             // 
+            // txtCedula
+            // 
+            txtCedula.Location = new Point(202, 164);
+            txtCedula.Name = "txtCedula";
+            txtCedula.Size = new Size(317, 27);
+            txtCedula.TabIndex = 14;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(88, 164);
+            label7.Name = "label7";
+            label7.Size = new Size(25, 20);
+            label7.TabIndex = 15;
+            label7.Text = "C.I";
+            // 
             // AgregarUsuario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label7);
+            Controls.Add(txtCedula);
             Controls.Add(txtUsuario);
             Controls.Add(botoncancel);
             Controls.Add(botonok);
@@ -194,5 +214,7 @@
         private Button botoncancel;
         private TextBox txtEmail;
         private TextBox txtUsuario;
+        private TextBox txtCedula;
+        private Label label7;
     }
 }

@@ -39,10 +39,10 @@
             // dgvUsuarios
             // 
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(192, 72);
+            dgvUsuarios.Location = new Point(118, 29);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(391, 190);
+            dgvUsuarios.Size = new Size(552, 230);
             dgvUsuarios.TabIndex = 0;
             // 
             // btnModificar

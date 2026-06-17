@@ -19,9 +19,9 @@ namespace TP_LP2
         private string rutaJson = Path.Combine(Application.StartupPath, "compras.json");
 
         private void btnRegistrar_Click(object sender, EventArgs e)
-        { 
+        {
             // 1. Validacion de entradas 
-            if (string.IsNullOrWhiteSpace(txtFacultad.Text) ||
+            if (string.IsNullOrWhiteSpace(cmbFacultad.Text) ||
                 string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
                 string.IsNullOrWhiteSpace(txtCantidad.Text))
@@ -40,7 +40,7 @@ namespace TP_LP2
             // 3. Creacion de nuevo pedido 
             Pedidos nuevoPedido = new Pedidos
             {
-                facultad = txtFacultad.Text,
+                facultad = cmbFacultad.Text,
                 nombre = txtNombre.Text,
                 descripcion = txtDescripcion.Text,
                 fecha = dtpFecha.Value,
@@ -69,7 +69,7 @@ namespace TP_LP2
                 MessageBox.Show("Pedido registrado con éxito y guardado en el archivo.", "Éxito");
 
                 // 6. Limpiamos los cuadros para el siguiente pedido
-                txtFacultad.Clear();
+                cmbFacultad.SelectedIndex = -1;
                 txtNombre.Clear();
                 txtDescripcion.Clear();
                 txtCantidad.Clear();
@@ -78,8 +78,8 @@ namespace TP_LP2
             {
                 MessageBox.Show("Ocurrió un error al guardar en el JSON: " + ex.Message, "Error");
             }
-        
-    
+
+
             solicitudes.Enqueue(nuevoPedido);//Agrega el nuevo pedido a la cola
             GuardarEnJson();//Guarda la cola actualizada en el archivo JSON
             MessageBox.Show("Pedido registrado exitosamente.");
@@ -98,7 +98,7 @@ namespace TP_LP2
             txtNombre.Text = primerPedido.nombre; // Asumiendo que el nombre del producto se almacena en la descripción
             txtCantidad.Text = primerPedido.cantidad.ToString(); // Asumiendo que la cantidad se almacena en el campo cantidad
             txtDescripcion.Text = primerPedido.descripcion; // Asumiendo que la descripción se almacena en el campo descripción
-            txtFacultad.Text = primerPedido.facultad; // Asumiendo que la facultad se almacena en el campo facultad
+            cmbFacultad.Text = primerPedido.facultad; // Asumiendo que la facultad se almacena en el campo facultad
             dtpFecha.Value = primerPedido.fecha; // Asumiendo que la fecha se almacena en el campo data
             MessageBox.Show("Edite los campos y haga clic en 'Registrar' para actualizar el pedido.");
 
@@ -129,7 +129,7 @@ namespace TP_LP2
         }
         private void LimpiarCampos()
         {
-            txtFacultad.Clear();
+            cmbFacultad.SelectedIndex = -1;
             txtNombre.Clear();
             txtDescripcion.Clear();
             txtCantidad.Clear();
@@ -153,6 +153,11 @@ namespace TP_LP2
             {
                 MessageBox.Show("Error al cargar desde JSON: " + ex.Message);
             }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close(); // Cierra la ventana actual y vuelve a la pantalla anterior
         }
     }
 

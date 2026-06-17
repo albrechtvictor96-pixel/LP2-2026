@@ -61,7 +61,7 @@ namespace TP_LP2
             dgvPendientes.DataSource = null;
             if (colaPedidos != null && colaPedidos.Count > 0)
             {
-               var listaPendientes = new List<Pedidos>(colaPedidos);
+                var listaPendientes = new List<Pedidos>(colaPedidos);
                 dgvPendientes.DataSource = listaPendientes;
                 if (dgvPendientes.Columns["nombre"] != null) dgvPendientes.Columns["nombre"].HeaderText = "Solicitante";
                 if (dgvPendientes.Columns["cantidad"] != null) dgvPendientes.Columns["cantidad"].HeaderText = "Cantidad";
@@ -169,6 +169,10 @@ namespace TP_LP2
             ActualizarGridPendientes();
             ActualizarListBoxHistorial();
         }
-            
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();//Cierra la ventana actual y vuelve a la pantalla anterior
+        }
     }
 }

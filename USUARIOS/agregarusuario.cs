@@ -20,9 +20,9 @@ namespace TP_LP2
             string apellido = txtApellido.Text.Trim();
             string username = txtUsuario.Text.Trim();
             string password = txtPassword.Text.Trim();
-
-            // Validamos que elijan un rol en el ComboBox de tu pantalla (image_cff8bb)
-            if (cmbRol.SelectedItem == null || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            string cedula = txtCedula.Text.Trim();
+            // Validamos que elijan un rol en el ComboBox de tu pantalla 
+            if (cmbRol.SelectedItem == null || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(cedula))
             {
                 MessageBox.Show("Por favor, complete los campos obligatorios y seleccione un rol.", "Campos vacíos");
                 return;
@@ -61,7 +61,8 @@ namespace TP_LP2
                 Apellido = apellido,
                 Username = username,
                 Password = password,
-                Rol = rolSeleccionado //  Guardamos el rol elegido del combo
+                Rol = rolSeleccionado, //  Guardamos el rol elegido del combo
+                Cedula = cedula
             };
 
             listaUsuarios.Add(nuevoUsuario);
@@ -75,7 +76,7 @@ namespace TP_LP2
                 MessageBox.Show("¡Usuario registrado con éxito!", "Éxito");
 
                 // Limpiamos los campos
-                txtNombre.Clear(); txtApellido.Clear(); txtUsuario.Clear(); txtPassword.Clear();
+                txtNombre.Clear(); txtApellido.Clear(); txtUsuario.Clear(); txtPassword.Clear(); txtCedula.Clear();
                 cmbRol.SelectedIndex = -1;
             }
             catch (Exception ex)
