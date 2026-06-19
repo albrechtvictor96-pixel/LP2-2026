@@ -38,17 +38,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(355, 56);
+            label1.Location = new Point(444, 70);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(106, 20);
+            label1.Size = new Size(138, 25);
             label1.TabIndex = 0;
             label1.Text = "Provisiones UC";
             // 
             // btnModuloPedidos
             // 
-            btnModuloPedidos.Location = new Point(71, 124);
+            btnModuloPedidos.Location = new Point(89, 155);
+            btnModuloPedidos.Margin = new Padding(4, 4, 4, 4);
             btnModuloPedidos.Name = "btnModuloPedidos";
-            btnModuloPedidos.Size = new Size(267, 106);
+            btnModuloPedidos.Size = new Size(334, 132);
             btnModuloPedidos.TabIndex = 1;
             btnModuloPedidos.Text = "Registrar Pedidos de Compras";
             btnModuloPedidos.UseVisualStyleBackColor = true;
@@ -56,9 +58,10 @@
             // 
             // btnModuloAprobacion
             // 
-            btnModuloAprobacion.Location = new Point(438, 124);
+            btnModuloAprobacion.Location = new Point(548, 155);
+            btnModuloAprobacion.Margin = new Padding(4, 4, 4, 4);
             btnModuloAprobacion.Name = "btnModuloAprobacion";
-            btnModuloAprobacion.Size = new Size(277, 106);
+            btnModuloAprobacion.Size = new Size(346, 132);
             btnModuloAprobacion.TabIndex = 2;
             btnModuloAprobacion.Text = "Procesar y Aprobar Pedidos";
             btnModuloAprobacion.UseVisualStyleBackColor = true;
@@ -66,9 +69,10 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(321, 397);
+            btnVolver.Location = new Point(401, 496);
+            btnVolver.Margin = new Padding(4, 4, 4, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(119, 41);
+            btnVolver.Size = new Size(149, 51);
             btnVolver.TabIndex = 3;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -76,9 +80,10 @@
             // 
             // btnGestionarUsuarios
             // 
-            btnGestionarUsuarios.Location = new Point(256, 296);
+            btnGestionarUsuarios.Location = new Point(320, 370);
+            btnGestionarUsuarios.Margin = new Padding(4, 4, 4, 4);
             btnGestionarUsuarios.Name = "btnGestionarUsuarios";
-            btnGestionarUsuarios.Size = new Size(254, 65);
+            btnGestionarUsuarios.Size = new Size(318, 81);
             btnGestionarUsuarios.TabIndex = 4;
             btnGestionarUsuarios.Text = "Gestionar Usuarios";
             btnGestionarUsuarios.UseVisualStyleBackColor = true;
@@ -86,17 +91,19 @@
             // 
             // FormMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
             Controls.Add(btnGestionarUsuarios);
             Controls.Add(btnVolver);
             Controls.Add(btnModuloAprobacion);
             Controls.Add(btnModuloPedidos);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 11F);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "FormMenuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormMenuPrincipal";
+            Text = "Sistema de Gestión de Pedidos y Adquisiciones";
             Load += FormMenuPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -104,7 +104,7 @@
             Margin = new Padding(4);
             Name = "FormGestionUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormGestionUsuarios";
+            Text = "Administración y Control de Usuarios";
             Load += FormGestionUsuarios_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);

@@ -141,7 +141,7 @@
             Margin = new Padding(4);
             Name = "FormAprobacion";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormAprobacion";
+            Text = "Gestion y Aprobacion de Pedidos";
             ((System.ComponentModel.ISupportInitialize)dgvPendientes).EndInit();
             ResumeLayout(false);
             PerformLayout();

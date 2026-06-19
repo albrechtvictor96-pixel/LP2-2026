@@ -231,7 +231,7 @@
             Margin = new Padding(4);
             Name = "RegistroCompras";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Registro de Compras";
+            Text = "Registro y Gestión de Pedidos de Compra";
             ResumeLayout(false);
             PerformLayout();
         }

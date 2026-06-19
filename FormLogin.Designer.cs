@@ -110,7 +110,7 @@
             Margin = new Padding(4);
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormLogin";
+            Text = "Inicio de Sesión - Sistema de Gestión de Compras";
             ResumeLayout(false);
             PerformLayout();
         }
