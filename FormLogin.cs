@@ -75,5 +75,22 @@ namespace TP_LP2
             formGestion.Show();
             this.Hide();
         }
+
+        private void btnMostrarOcultar_Click(object sender, EventArgs e)
+        {
+            if (txtpassword.PasswordChar == '*')
+            {
+
+                txtpassword.PasswordChar = '\0';
+
+                btnMostrarOcultar.Text = ":)";
+
+            }
+            else
+            {
+                txtpassword.PasswordChar = '*';
+                btnMostrarOcultar.Text = "👁";
+            }
+        }
     }
 }

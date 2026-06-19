@@ -33,73 +33,83 @@
             txtusuario = new TextBox();
             txtpassword = new TextBox();
             btningresar = new Button();
-            btnGestion = new Button();
+            btnMostrarOcultar = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(175, 123);
+            label1.Location = new Point(219, 154);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(59, 20);
+            label1.Size = new Size(77, 25);
             label1.TabIndex = 0;
             label1.Text = "Usuario";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(175, 196);
+            label2.Location = new Point(219, 245);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(83, 20);
+            label2.Size = new Size(108, 25);
             label2.TabIndex = 1;
             label2.Text = "Contraseña";
             // 
             // txtusuario
             // 
-            txtusuario.Location = new Point(334, 116);
+            txtusuario.Location = new Point(385, 154);
+            txtusuario.Margin = new Padding(4);
             txtusuario.Name = "txtusuario";
-            txtusuario.Size = new Size(210, 27);
+            txtusuario.Size = new Size(262, 32);
             txtusuario.TabIndex = 5;
             // 
             // txtpassword
             // 
-            txtpassword.Location = new Point(334, 192);
+            txtpassword.Location = new Point(385, 242);
+            txtpassword.Margin = new Padding(4);
             txtpassword.Name = "txtpassword";
-            txtpassword.Size = new Size(210, 27);
+            txtpassword.PasswordChar = '*';
+            txtpassword.Size = new Size(262, 32);
             txtpassword.TabIndex = 3;
             // 
             // btningresar
             // 
-            btningresar.Location = new Point(331, 299);
+            btningresar.Location = new Point(385, 370);
+            btningresar.Margin = new Padding(4);
             btningresar.Name = "btningresar";
-            btningresar.Size = new Size(161, 45);
+            btningresar.Size = new Size(201, 56);
             btningresar.TabIndex = 4;
             btningresar.Text = "Ingresar";
             btningresar.UseVisualStyleBackColor = true;
             btningresar.Click += btnIngresar_Click_1;
             // 
-            // btnGestion
+            // btnMostrarOcultar
             // 
-            btnGestion.Location = new Point(315, 383);
-            btnGestion.Name = "btnGestion";
-            btnGestion.Size = new Size(189, 36);
-            btnGestion.TabIndex = 6;
-            btnGestion.Text = "Gestionar Usuarios";
-            btnGestion.UseVisualStyleBackColor = true;
-            btnGestion.Click += btnGestion_Click;
+            btnMostrarOcultar.FlatStyle = FlatStyle.Flat;
+            btnMostrarOcultar.Location = new Point(654, 242);
+            btnMostrarOcultar.Name = "btnMostrarOcultar";
+            btnMostrarOcultar.Size = new Size(45, 32);
+            btnMostrarOcultar.TabIndex = 7;
+            btnMostrarOcultar.Text = "👁";
+            btnMostrarOcultar.UseVisualStyleBackColor = true;
+            btnMostrarOcultar.Click += btnMostrarOcultar_Click;
             // 
             // FormLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(827, 488);
-            Controls.Add(btnGestion);
+            ClientSize = new Size(1034, 610);
+            Controls.Add(btnMostrarOcultar);
             Controls.Add(btningresar);
             Controls.Add(txtpassword);
             Controls.Add(txtusuario);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 11F);
+            Margin = new Padding(4);
             Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormLogin";
             ResumeLayout(false);
             PerformLayout();
@@ -112,6 +122,6 @@
         private TextBox txtusuario;
         private TextBox txtpassword;
         private Button btningresar;
-        private Button btnGestion;
+        private Button btnMostrarOcultar;
     }
 }

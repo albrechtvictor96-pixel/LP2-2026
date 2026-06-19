@@ -42,16 +42,18 @@
             // lstHistorial
             // 
             lstHistorial.FormattingEnabled = true;
-            lstHistorial.Location = new Point(379, 81);
+            lstHistorial.Location = new Point(484, 102);
+            lstHistorial.Margin = new Padding(4);
             lstHistorial.Name = "lstHistorial";
-            lstHistorial.Size = new Size(409, 244);
+            lstHistorial.Size = new Size(510, 304);
             lstHistorial.TabIndex = 3;
             // 
             // btnAprobar
             // 
-            btnAprobar.Location = new Point(188, 365);
+            btnAprobar.Location = new Point(235, 456);
+            btnAprobar.Margin = new Padding(4);
             btnAprobar.Name = "btnAprobar";
-            btnAprobar.Size = new Size(193, 50);
+            btnAprobar.Size = new Size(241, 62);
             btnAprobar.TabIndex = 4;
             btnAprobar.Text = "Aprobar Pedidos";
             btnAprobar.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@
             // 
             // btnRechazar
             // 
-            btnRechazar.Location = new Point(387, 365);
+            btnRechazar.Location = new Point(484, 456);
+            btnRechazar.Margin = new Padding(4);
             btnRechazar.Name = "btnRechazar";
-            btnRechazar.Size = new Size(196, 50);
+            btnRechazar.Size = new Size(245, 62);
             btnRechazar.TabIndex = 5;
             btnRechazar.Text = "Rechazar Pedidos";
             btnRechazar.UseVisualStyleBackColor = true;
@@ -70,17 +73,19 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(574, 41);
+            label4.Location = new Point(683, 56);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(69, 20);
+            label4.Size = new Size(87, 25);
             label4.TabIndex = 9;
             label4.Text = "Historial ";
             // 
             // btnDeshacerAprovacion
             // 
-            btnDeshacerAprovacion.Location = new Point(12, 365);
+            btnDeshacerAprovacion.Location = new Point(15, 456);
+            btnDeshacerAprovacion.Margin = new Padding(4);
             btnDeshacerAprovacion.Name = "btnDeshacerAprovacion";
-            btnDeshacerAprovacion.Size = new Size(170, 50);
+            btnDeshacerAprovacion.Size = new Size(212, 62);
             btnDeshacerAprovacion.TabIndex = 10;
             btnDeshacerAprovacion.Text = "Deshacer Ultima Aprobacion";
             btnDeshacerAprovacion.UseVisualStyleBackColor = true;
@@ -91,26 +96,29 @@
             dgvPendientes.BackgroundColor = SystemColors.Window;
             dgvPendientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPendientes.GridColor = SystemColors.ControlText;
-            dgvPendientes.Location = new Point(2, 81);
+            dgvPendientes.Location = new Point(2, 101);
+            dgvPendientes.Margin = new Padding(4);
             dgvPendientes.Name = "dgvPendientes";
             dgvPendientes.RowHeadersWidth = 51;
-            dgvPendientes.Size = new Size(371, 244);
+            dgvPendientes.Size = new Size(474, 305);
             dgvPendientes.TabIndex = 11;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(91, 41);
+            label1.Location = new Point(110, 56);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(136, 20);
+            label1.Size = new Size(175, 25);
             label1.TabIndex = 12;
             label1.Text = "Pedidos Pendientes";
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(601, 365);
+            btnVolver.Location = new Point(751, 456);
+            btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(160, 50);
+            btnVolver.Size = new Size(200, 62);
             btnVolver.TabIndex = 13;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -118,9 +126,9 @@
             // 
             // FormAprobacion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
             Controls.Add(btnVolver);
             Controls.Add(label1);
             Controls.Add(dgvPendientes);
@@ -129,7 +137,10 @@
             Controls.Add(btnRechazar);
             Controls.Add(btnAprobar);
             Controls.Add(lstHistorial);
+            Font = new Font("Segoe UI", 11F);
+            Margin = new Padding(4);
             Name = "FormAprobacion";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAprobacion";
             ((System.ComponentModel.ISupportInitialize)dgvPendientes).EndInit();
             ResumeLayout(false);

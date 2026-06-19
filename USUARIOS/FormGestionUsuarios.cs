@@ -79,8 +79,6 @@ namespace TP_LP2
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            FormLogin pantallaLogin = new FormLogin();// Crear una instancia del formulario de login
-            pantallaLogin.Show();// Mostrar el formulario de login
             this.Close();//Cerrar el formulario actual de gestión de usuarios
         }
 

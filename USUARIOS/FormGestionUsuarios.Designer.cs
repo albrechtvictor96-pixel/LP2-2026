@@ -39,17 +39,19 @@
             // dgvUsuarios
             // 
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(118, 29);
+            dgvUsuarios.Location = new Point(148, 36);
+            dgvUsuarios.Margin = new Padding(4);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(552, 230);
+            dgvUsuarios.Size = new Size(690, 288);
             dgvUsuarios.TabIndex = 0;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(103, 301);
+            btnModificar.Location = new Point(129, 376);
+            btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(151, 35);
+            btnModificar.Size = new Size(189, 44);
             btnModificar.TabIndex = 1;
             btnModificar.Text = "Modificar Usuario";
             btnModificar.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(295, 301);
+            btnEliminar.Location = new Point(369, 376);
+            btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(164, 35);
+            btnEliminar.Size = new Size(205, 44);
             btnEliminar.TabIndex = 2;
             btnEliminar.Text = "Eliminar Usuario";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -67,9 +70,10 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(502, 301);
+            btnVolver.Location = new Point(628, 376);
+            btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(140, 35);
+            btnVolver.Size = new Size(175, 44);
             btnVolver.TabIndex = 3;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -77,9 +81,10 @@
             // 
             // btnRegistrarNuevo
             // 
-            btnRegistrarNuevo.Location = new Point(313, 371);
+            btnRegistrarNuevo.Location = new Point(391, 464);
+            btnRegistrarNuevo.Margin = new Padding(4);
             btnRegistrarNuevo.Name = "btnRegistrarNuevo";
-            btnRegistrarNuevo.Size = new Size(134, 35);
+            btnRegistrarNuevo.Size = new Size(168, 44);
             btnRegistrarNuevo.TabIndex = 4;
             btnRegistrarNuevo.Text = "Registrar Nuevo";
             btnRegistrarNuevo.UseVisualStyleBackColor = true;
@@ -87,15 +92,18 @@
             // 
             // FormGestionUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
             Controls.Add(btnRegistrarNuevo);
             Controls.Add(btnVolver);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
             Controls.Add(dgvUsuarios);
+            Font = new Font("Segoe UI", 11F);
+            Margin = new Padding(4);
             Name = "FormGestionUsuarios";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormGestionUsuarios";
             Load += FormGestionUsuarios_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();

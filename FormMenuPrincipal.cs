@@ -20,19 +20,22 @@ namespace TP_LP2.COMPRAS
             string rol = Usuario.RolUsuarioLogueado;
             if (rol == "Administrador")
             {
-                btnModuloPedidos.Enabled = true;
-                btnModuloAprobacion.Enabled = true;
+                btnModuloPedidos.Enabled = true;// Habilitar el botón de módulo de pedidos para el rol de Administrador
+                btnModuloAprobacion.Enabled = true;// Habilitar el botón de módulo de aprobación para el rol de Administrador
+                btnGestionarUsuarios.Enabled = true;// Habilitar el botón de gestionar usuarios para el rol de Administrador
 
             }
             else if (rol == "Directivo")
             {
-                btnModuloPedidos.Enabled = false;
-                btnModuloAprobacion.Enabled = true;
+                btnModuloPedidos.Enabled = false;// Deshabilitar el botón de módulo de pedidos para el rol de Directivo
+                btnModuloAprobacion.Enabled = true;// Habilitar el botón de módulo de aprobación para el rol de Directivo
+                btnGestionarUsuarios.Enabled = false;// Deshabilitar el botón de gestionar usuarios para el rol de Directivo
             }
             else if (rol == "Funcionario")
             {
-                btnModuloPedidos.Enabled = true;
-                btnModuloAprobacion.Enabled = false;
+                btnModuloPedidos.Enabled = true;// Habilitar el botón de módulo de pedidos para el rol de Funcionario
+                btnModuloAprobacion.Enabled = false;// Deshabilitar el botón de módulo de aprobación para el rol de Funcionario
+                btnGestionarUsuarios.Enabled = false;// Deshabilitar el botón de gestionar usuarios para el rol de Funcionario
             }
 
         }
@@ -53,6 +56,12 @@ namespace TP_LP2.COMPRAS
             FormLogin pantallaLogin = new FormLogin();
             pantallaLogin.Show();
             this.Close();
+        }
+        // Botón para gestionar usuarios, solo visible para el rol de Administrador
+        private void btnGestionarUsuarios_Click(object sender, EventArgs e)
+        {
+            FormGestionUsuarios pantallaGestionUsuarios = new FormGestionUsuarios();
+            pantallaGestionUsuarios.ShowDialog(); 
         }
     }
 }

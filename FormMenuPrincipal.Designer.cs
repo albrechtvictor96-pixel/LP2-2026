@@ -32,6 +32,7 @@
             btnModuloPedidos = new Button();
             btnModuloAprobacion = new Button();
             btnVolver = new Button();
+            btnGestionarUsuarios = new Button();
             SuspendLayout();
             // 
             // label1
@@ -45,7 +46,7 @@
             // 
             // btnModuloPedidos
             // 
-            btnModuloPedidos.Location = new Point(118, 167);
+            btnModuloPedidos.Location = new Point(71, 124);
             btnModuloPedidos.Name = "btnModuloPedidos";
             btnModuloPedidos.Size = new Size(267, 106);
             btnModuloPedidos.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnModuloAprobacion
             // 
-            btnModuloAprobacion.Location = new Point(420, 167);
+            btnModuloAprobacion.Location = new Point(438, 124);
             btnModuloAprobacion.Name = "btnModuloAprobacion";
             btnModuloAprobacion.Size = new Size(277, 106);
             btnModuloAprobacion.TabIndex = 2;
@@ -65,7 +66,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(355, 343);
+            btnVolver.Location = new Point(321, 397);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(119, 41);
             btnVolver.TabIndex = 3;
@@ -73,16 +74,28 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // btnGestionarUsuarios
+            // 
+            btnGestionarUsuarios.Location = new Point(256, 296);
+            btnGestionarUsuarios.Name = "btnGestionarUsuarios";
+            btnGestionarUsuarios.Size = new Size(254, 65);
+            btnGestionarUsuarios.TabIndex = 4;
+            btnGestionarUsuarios.Text = "Gestionar Usuarios";
+            btnGestionarUsuarios.UseVisualStyleBackColor = true;
+            btnGestionarUsuarios.Click += btnGestionarUsuarios_Click;
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnGestionarUsuarios);
             Controls.Add(btnVolver);
             Controls.Add(btnModuloAprobacion);
             Controls.Add(btnModuloPedidos);
             Controls.Add(label1);
             Name = "FormMenuPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMenuPrincipal";
             Load += FormMenuPrincipal_Load;
             ResumeLayout(false);
@@ -95,5 +108,6 @@
         private Button btnModuloPedidos;
         private Button btnModuloAprobacion;
         private Button btnVolver;
+        private Button btnGestionarUsuarios;
     }
 }
