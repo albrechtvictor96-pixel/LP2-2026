@@ -135,8 +135,8 @@ namespace TP_LP2
                 return;
             }
             Pedidos pedidoActual = solicitudes.Peek(); // Obtenemos el pedido actual sin eliminarlo para mostrar su ID en la confirmación
-            // Cartel de confirmación doble para evitar "clicks sin querer"
-            DialogResult confirmar = MessageBox.Show("¿Estás absolutamente seguro de que querés el ultimo pedido? Esta acción no se puede deshacer.",
+            // Cartel de confirmación doble para evitar clicks accidentales en el botón de eliminar
+            DialogResult confirmar = MessageBox.Show("¿Estás absolutamente seguro de que querés ELIMINAR el ultimo pedido? Esta acción no se puede deshacer.",
                                                      "Confirmar Eliminación",
                                                      MessageBoxButtons.YesNo,
                                                      MessageBoxIcon.Warning);

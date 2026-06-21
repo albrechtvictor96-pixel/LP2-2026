@@ -18,13 +18,13 @@ namespace TP_LP2
         {
             InitializeComponent();
             CargarDatos();//lee archivos de compras json
-            CargarHistorialDesdeJson();//carga el historial desde el archivo JSON
             ActualizarGridPendientes();//actualiza el datagridview con los pedidos pendientes en la cola
             ActualizarListBoxHistorial();//llena el listbox con el historial de pedidos procesado
         }
 
         private void CargarDatos()//carga los datos de la cola de pedidos y el historial desde los archivos JSON, si existen
         {
+            // 1. Cargamos la cola de pedidos pendientes
             if (File.Exists(rutaCola))
             {
                 try
@@ -36,25 +36,8 @@ namespace TP_LP2
                 catch { }
             }
 
-            if (File.Exists(rutaHistorial))
-            {
-                try
-                {
-                    string json = File.ReadAllText(rutaHistorial);
-                    var lista = JsonSerializer.Deserialize<List<Pedidos>>(json);
-                    if (lista != null)
-                    {
-                        // Cargamos en la pila respetando el orden
-                        pilaHistorial = new Stack<Pedidos>();
-                        foreach (var item in lista)
-                        {
-                            pilaHistorial.Push(item);
-                        }
-                    }
-                }
-                catch { }
-            }
-            CargarHistorialDesdeJson();//llamaos al metodo para que cargue el historial desde el archivo JSON, asegurando que se mantenga el orden correcto en la pila
+            // 2. Cargamos el historial delegando la función para evitar duplicados
+            CargarHistorialDesdeJson();
         }
         private void ActualizarGridPendientes()
         {
@@ -70,6 +53,10 @@ namespace TP_LP2
                 if (dgvPendientes.Columns["fecha"] != null) dgvPendientes.Columns["fecha"].HeaderText = "Fecha";
                 if (dgvPendientes.Columns["estado"] != null) dgvPendientes.Columns["estado"].HeaderText = "Estado";
 
+            }
+            else
+            {
+                dgvPendientes.DataSource = null;
             }
         }
         private void ProcesarPedido(string estado) //procesa el pedido actual, lo mueve a la pila de historial con el estado correspondiente y guarda los cambios en los archivos JSON
