@@ -17,6 +17,7 @@ namespace TP_LP2
 
         private void btnIngresar_Click_1(object sender, EventArgs e)
         {
+         
             string usuarioIngresado = txtusuario.Text.Trim();
             string passwordIngresada = txtpassword.Text.Trim();
 

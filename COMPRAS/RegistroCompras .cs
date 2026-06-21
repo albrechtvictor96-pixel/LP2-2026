@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Text;
 namespace TP_LP2
 {
     public partial class RegistroCompras : Form
@@ -14,7 +15,11 @@ namespace TP_LP2
         {
             InitializeComponent();
             CargarDesdeJson();
+ 
         }
+        
+        private bool esNuevo = true;// Variable para controlar si estamos editando un pedido existente o registrando uno nuevo
+        private string idPedidoEditando = ""; // Variable para almacenar el ID del pedido que se está editando (si es el caso)
         private Queue<Pedidos> solicitudes = new Queue<Pedidos>();
         private string rutaJson = Path.Combine(Application.StartupPath, "compras.json");
 
@@ -37,55 +42,70 @@ namespace TP_LP2
                 return;
             }
 
-            // 3. Creacion de nuevo pedido 
-            Pedidos nuevoPedido = new Pedidos
+            // // 3. Decidir si se crea uno nuevo o se edita el actual
+            if (esNuevo)
             {
-                facultad = cmbFacultad.Text,
-                nombre = txtNombre.Text,
-                descripcion = txtDescripcion.Text,
-                fecha = dtpFecha.Value,
-                cantidad = cantidad,
-                estado = "Pendiente" // para que la pantalla de aprobación sepa que está esperando
-            };
+                // CAMINO A: PEDIDO NUEVO
+                Pedidos nuevoPedido = new Pedidos
+                {
+                    facultad = cmbFacultad.Text,
+                    nombre = txtNombre.Text,
+                    descripcion = txtDescripcion.Text,
+                    fecha = dtpFecha.Value,
+                    cantidad = cantidad,
+                    estado = "Pendiente"
+                };
+                // C# le asigna automáticamente el Guid.NewGuid() de Solicitud.cs
 
+                solicitudes.Enqueue(nuevoPedido);
+            }
+            else
+            {
+                // --- CAMINO B: EDICIÓN DE UN PEDIDO (No agrega filas, modifica en la cola) ---
+                // Convertimos temporalmente a lista para buscar y modificar el Guid guardado
+                var listaTemporal = new List<Pedidos>(solicitudes);
+                Pedidos pedidoExistente = listaTemporal.Find(p => p.id == idPedidoEditando);
+
+                if (pedidoExistente != null)
+                {
+                    pedidoExistente.facultad = cmbFacultad.Text;
+                    pedidoExistente.nombre = txtNombre.Text;
+                    pedidoExistente.descripcion = txtDescripcion.Text;
+                    pedidoExistente.fecha = dtpFecha.Value;
+                    pedidoExistente.cantidad = cantidad;
+                }
+
+                // Reconstruimos la cola original con los datos modificados
+                solicitudes = new Queue<Pedidos>(listaTemporal);
+            }
+
+            // 4. Guardar la cola actualizada en el archivo JSON
             try
             {
-                // 1. Metemos el pedido a la estructura de la Cola
-                // (Si tu cola en esta pantalla se llama 'colaPedidos', cambialo por ese nombre)
-                solicitudes.Enqueue(nuevoPedido);
-
-                // 2. Pasamos la cola a una lista para que se pueda serializar correctamente
                 var listaParaGuardar = new List<Pedidos>(solicitudes);
-
-                // 3. Lo convertimos a formato texto JSON ordenado
                 var opciones = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
                 string jsonTexto = System.Text.Json.JsonSerializer.Serialize(listaParaGuardar, opciones);
 
-                // 4. Definimos la ruta del archivo y lo grabamos en el disco duro
                 string rutaDestino = Path.Combine(Application.StartupPath, "compras.json");
                 File.WriteAllText(rutaDestino, jsonTexto);
 
-                // 5. Avisamos al usuario que funcionó
-                MessageBox.Show("Pedido registrado con éxito y guardado en el archivo.", "Éxito");
+                MessageBox.Show("Operación procesada con éxito y guardada en el archivo.", "Éxito");
 
-                // 6. Limpiamos los cuadros para el siguiente pedido
+                // 5. Limpiamos los cuadros y reseteamos variables de control
                 cmbFacultad.SelectedIndex = -1;
                 txtNombre.Clear();
                 txtDescripcion.Clear();
                 txtCantidad.Clear();
+
+                esNuevo = true;
+                idPedidoEditando = "";
+                btnRegistrar.Text = "Registrar Pedido";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al guardar en el JSON: " + ex.Message, "Error");
             }
-
-
-            solicitudes.Enqueue(nuevoPedido);//Agrega el nuevo pedido a la cola
-            GuardarEnJson();//Guarda la cola actualizada en el archivo JSON
-            MessageBox.Show("Pedido registrado exitosamente.");
-            LimpiarCampos();//Limpia los campos para el siguiente registro
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (solicitudes.Count == 0)
@@ -94,6 +114,8 @@ namespace TP_LP2
                 return;
             }
             Pedidos primerPedido = solicitudes.Peek(); // Obtiene el primer pedido sin eliminarlo
+            esNuevo = false; // Indicamos que ahora estamos editando un pedido existente
+            idPedidoEditando = primerPedido.id; // En este caso, siempre editaremos el primer pedido (índice 0 en la cola)
             //cargar los datos del primer pedido en los campos de texto para su edición
             txtNombre.Text = primerPedido.nombre; // Asumiendo que el nombre del producto se almacena en la descripción
             txtCantidad.Text = primerPedido.cantidad.ToString(); // Asumiendo que la cantidad se almacena en el campo cantidad
@@ -106,14 +128,62 @@ namespace TP_LP2
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            // 1. Validamos si hay pedidos cargados en la cola para poder eliminar
             if (solicitudes.Count == 0)
             {
-                MessageBox.Show("No hay pedidos para eliminar.");
+                MessageBox.Show("No hay ningún pedido en pantalla para eliminar.", "Atención");
                 return;
             }
-            Pedidos pedidoAtendido = solicitudes.Dequeue(); // Elimina el primer pedido de la cola
-            GuardarEnJson();// Guarda la cola actualizada en el archivo JSON
-            MessageBox.Show("Pedido atendido y eliminado de la lista.");
+            Pedidos pedidoActual = solicitudes.Peek(); // Obtenemos el pedido actual sin eliminarlo para mostrar su ID en la confirmación
+            // Cartel de confirmación doble para evitar "clicks sin querer"
+            DialogResult confirmar = MessageBox.Show("¿Estás absolutamente seguro de que querés el ultimo pedido? Esta acción no se puede deshacer.",
+                                                     "Confirmar Eliminación",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Warning);
+
+            if (confirmar == DialogResult.No)
+            {
+                return; // Si el usuario tocó el botón por error y le da a "No", el programa no hace nada
+            }
+
+            // 3. Pasamos la cola a una lista temporal para poder buscar y remover por ID 
+            var listaTemporal = new List<Pedidos>(solicitudes);
+
+            // Buscamos el pedido en la lista que coincida con el Guid del pedido en pantalla
+            Pedidos aEliminar = listaTemporal.Find(p => p.id == pedidoActual.id);
+
+            if (aEliminar != null)
+            {
+                // 4. Lo removemos de la lista en memoria
+                listaTemporal.Remove(aEliminar);
+
+                // 5. Reconstruimos tu cola original con los elementos restantes
+                solicitudes = new Queue<Pedidos>(listaTemporal);
+
+                // 6. Guardamos la cola limpia de vuelta en el archivo compras.json
+                try
+                {
+                    var opciones = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
+                    string jsonTexto = System.Text.Json.JsonSerializer.Serialize(listaTemporal, opciones);
+
+                    string rutaDestino = Path.Combine(Application.StartupPath, "compras.json");
+                    File.WriteAllText(rutaDestino, jsonTexto);
+
+                    MessageBox.Show("Pedido eliminado con éxito.", "Éxito");
+
+                    // 7. Limpiamos por completo los TextBox para que la pantalla no quede con datos viejos
+                    cmbFacultad.SelectedIndex = -1;
+                    txtNombre.Clear();
+                    txtDescripcion.Clear();
+                    txtCantidad.Clear();
+
+                    // 8. Opcional: Si tenés una función que vuelve a hacer Peek() para mostrar el siguiente pedido en cola, la llamás acá.
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error al intentar actualizar el archivo JSON: " + ex.Message, "Error");
+                }
+            }
         }
         private void GuardarEnJson()
         {

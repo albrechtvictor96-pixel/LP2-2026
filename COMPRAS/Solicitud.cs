@@ -11,6 +11,7 @@ namespace TP_LP2
             public string descripcion { get; set; }
             public string facultad { get; set; }
             public string estado { get; set; } = "Pendiente";
+            public string id { get; set; } = Guid.NewGuid().ToString(); // Genera un ID único para cada pedido
 
     }
 }
