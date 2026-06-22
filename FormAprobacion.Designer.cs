@@ -36,13 +36,16 @@
             dgvPendientes = new DataGridView();
             label1 = new Label();
             btnVolver = new Button();
+            lblPendientes = new Label();
+            lblAprobados = new Label();
+            lblRechazados = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPendientes).BeginInit();
             SuspendLayout();
             // 
             // lstHistorial
             // 
             lstHistorial.FormattingEnabled = true;
-            lstHistorial.Location = new Point(484, 102);
+            lstHistorial.Location = new Point(477, 57);
             lstHistorial.Margin = new Padding(4);
             lstHistorial.Name = "lstHistorial";
             lstHistorial.Size = new Size(510, 304);
@@ -73,7 +76,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(683, 56);
+            label4.Location = new Point(685, 24);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(87, 25);
@@ -96,7 +99,7 @@
             dgvPendientes.BackgroundColor = SystemColors.Window;
             dgvPendientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPendientes.GridColor = SystemColors.ControlText;
-            dgvPendientes.Location = new Point(2, 101);
+            dgvPendientes.Location = new Point(2, 56);
             dgvPendientes.Margin = new Padding(4);
             dgvPendientes.Name = "dgvPendientes";
             dgvPendientes.RowHeadersWidth = 51;
@@ -106,7 +109,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(110, 56);
+            label1.Location = new Point(96, 24);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(175, 25);
@@ -124,11 +127,41 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // lblPendientes
+            // 
+            lblPendientes.AutoSize = true;
+            lblPendientes.Location = new Point(131, 381);
+            lblPendientes.Name = "lblPendientes";
+            lblPendientes.Size = new Size(128, 25);
+            lblPendientes.TabIndex = 14;
+            lblPendientes.Text = "Pendientes: 0 ";
+            // 
+            // lblAprobados
+            // 
+            lblAprobados.AutoSize = true;
+            lblAprobados.Location = new Point(540, 381);
+            lblAprobados.Name = "lblAprobados";
+            lblAprobados.Size = new Size(123, 25);
+            lblAprobados.TabIndex = 15;
+            lblAprobados.Text = "Aprobados: 0";
+            // 
+            // lblRechazados
+            // 
+            lblRechazados.AutoSize = true;
+            lblRechazados.Location = new Point(751, 381);
+            lblRechazados.Name = "lblRechazados";
+            lblRechazados.Size = new Size(130, 25);
+            lblRechazados.TabIndex = 16;
+            lblRechazados.Text = "Rechazados: 0";
+            // 
             // FormAprobacion
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1000, 562);
+            Controls.Add(lblRechazados);
+            Controls.Add(lblAprobados);
+            Controls.Add(lblPendientes);
             Controls.Add(btnVolver);
             Controls.Add(label1);
             Controls.Add(dgvPendientes);
@@ -156,5 +189,8 @@
         private DataGridView dgvPendientes;
         private Label label1;
         private Button btnVolver;
+        private Label lblPendientes;
+        private Label lblAprobados;
+        private Label lblRechazados;
     }
 }

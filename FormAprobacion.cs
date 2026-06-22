@@ -20,6 +20,7 @@ namespace TP_LP2
             CargarDatos();//lee archivos de compras json
             ActualizarGridPendientes();//actualiza el datagridview con los pedidos pendientes en la cola
             ActualizarListBoxHistorial();//llena el listbox con el historial de pedidos procesado
+            ActualizarReportes();//actualiza los labels con el conteo de pedidos pendientes, aprobados y rechazados
         }
 
         private void CargarDatos()//carga los datos de la cola de pedidos y el historial desde los archivos JSON, si existen
@@ -76,6 +77,7 @@ namespace TP_LP2
             MessageBox.Show($"Pedido de {pedidoProcesado.nombre} fue {estado}.", "Éxito");
             ActualizarGridPendientes();//Después de procesar el pedido, actualizamos el datagridview para reflejar los cambios en la cola de pedidos pendientes
             ActualizarListBoxHistorial();//y actualizamos el listbox para mostrar el nuevo pedido procesado en el historial
+            ActualizarReportes();//y actualizamos los reportes para reflejar el nuevo conteo de pedidos pendientes, aprobados y rechazados
         }
 
         private void GuardarTodo()
@@ -155,11 +157,29 @@ namespace TP_LP2
             MessageBox.Show($"Se ha deshecho la última acción. Pedido de {ultimoProcesado.nombre} vuelve a estar pendiente.", "Éxito");
             ActualizarGridPendientes();
             ActualizarListBoxHistorial();
+            ActualizarReportes();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();//Cierra la ventana actual y vuelve a la pantalla anterior
+        }
+        private void ActualizarReportes()
+        {
+            int totalPendientes = colaPedidos.Count;//contamos los pedidos pendientes en la cola
+
+            int totalAprobados = 0;//contamos los pedidos aprobados en la pila del historial
+            int totalRechazados = 0;//contamos los pedidos rechazados en la pila del historial
+            foreach(var pedido in pilaHistorial)
+            {
+                if (pedido.estado == "Aprobado") totalAprobados++;
+                else if (pedido.estado == "Rechazado") totalRechazados++;
+            }
+            lblPendientes.Text = $"Pendientes: {totalPendientes}";
+            lblAprobados.Text = $"Aprobados: {totalAprobados}";
+            lblRechazados.Text = $"Rechazados: {totalRechazados}";
+
+
         }
     }
 }
