@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP_LP2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d4e3a820efc9730a47a80df8a209cb6c3e5f967")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fb00359a7081e890b3fb26d2c93b8c706f6416f")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP_LP2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP_LP2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

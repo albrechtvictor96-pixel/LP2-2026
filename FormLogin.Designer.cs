@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             label1 = new Label();
             label2 = new Label();
             txtusuario = new TextBox();
             txtpassword = new TextBox();
             btningresar = new Button();
             btnMostrarOcultar = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(219, 154);
+            label1.Location = new Point(250, 200);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(77, 25);
@@ -49,7 +52,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(219, 245);
+            label2.Location = new Point(230, 249);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(108, 25);
@@ -58,7 +61,7 @@
             // 
             // txtusuario
             // 
-            txtusuario.Location = new Point(385, 154);
+            txtusuario.Location = new Point(364, 193);
             txtusuario.Margin = new Padding(4);
             txtusuario.Name = "txtusuario";
             txtusuario.Size = new Size(262, 32);
@@ -66,7 +69,7 @@
             // 
             // txtpassword
             // 
-            txtpassword.Location = new Point(385, 242);
+            txtpassword.Location = new Point(364, 242);
             txtpassword.Margin = new Padding(4);
             txtpassword.Name = "txtpassword";
             txtpassword.PasswordChar = '*';
@@ -75,7 +78,7 @@
             // 
             // btningresar
             // 
-            btningresar.Location = new Point(385, 370);
+            btningresar.Location = new Point(364, 358);
             btningresar.Margin = new Padding(4);
             btningresar.Name = "btningresar";
             btningresar.Size = new Size(201, 56);
@@ -89,17 +92,30 @@
             btnMostrarOcultar.FlatStyle = FlatStyle.Flat;
             btnMostrarOcultar.Location = new Point(654, 242);
             btnMostrarOcultar.Name = "btnMostrarOcultar";
-            btnMostrarOcultar.Size = new Size(45, 32);
+            btnMostrarOcultar.Size = new Size(42, 36);
             btnMostrarOcultar.TabIndex = 7;
             btnMostrarOcultar.Text = "👁";
             btnMostrarOcultar.UseVisualStyleBackColor = true;
             btnMostrarOcultar.Click += btnMostrarOcultar_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.ErrorImage = null;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = null;
+            pictureBox1.Location = new Point(406, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(111, 126);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1034, 610);
+            ClientSize = new Size(934, 602);
+            Controls.Add(pictureBox1);
             Controls.Add(btnMostrarOcultar);
             Controls.Add(btningresar);
             Controls.Add(txtpassword);
@@ -107,10 +123,14 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 11F);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio de Sesión - Sistema de Gestión de Compras";
+            Load += FormLogin_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,5 +143,6 @@
         private TextBox txtpassword;
         private Button btningresar;
         private Button btnMostrarOcultar;
+        private PictureBox pictureBox1;
     }
 }

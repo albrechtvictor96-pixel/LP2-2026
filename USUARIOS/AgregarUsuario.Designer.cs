@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarUsuario));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -48,18 +49,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(68, 9);
+            label1.Font = new Font("Segoe UI", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(339, 22);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(155, 28);
+            label1.Size = new Size(189, 31);
             label1.TabIndex = 0;
             label1.Text = "Agregar Usuario";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(92, 69);
+            label2.Location = new Point(92, 83);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(81, 25);
@@ -69,7 +70,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(92, 135);
+            label3.Location = new Point(91, 142);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(82, 25);
@@ -98,16 +99,16 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(248, 135);
-            txtApellido.Margin = new Padding(4, 4, 4, 4);
+            txtApellido.Location = new Point(248, 142);
+            txtApellido.Margin = new Padding(4);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(400, 32);
             txtApellido.TabIndex = 5;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(248, 69);
-            txtNombre.Margin = new Padding(4, 4, 4, 4);
+            txtNombre.Location = new Point(252, 83);
+            txtNombre.Margin = new Padding(4);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(400, 32);
             txtNombre.TabIndex = 7;
@@ -115,7 +116,7 @@
             // txtPassword
             // 
             txtPassword.Location = new Point(248, 431);
-            txtPassword.Margin = new Padding(4, 4, 4, 4);
+            txtPassword.Margin = new Padding(4);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(400, 32);
             txtPassword.TabIndex = 8;
@@ -125,7 +126,7 @@
             cmbRol.FormattingEnabled = true;
             cmbRol.Items.AddRange(new object[] { "Administrador", "Directivo", "Funcionario" });
             cmbRol.Location = new Point(248, 274);
-            cmbRol.Margin = new Padding(4, 4, 4, 4);
+            cmbRol.Margin = new Padding(4);
             cmbRol.Name = "cmbRol";
             cmbRol.Size = new Size(209, 33);
             cmbRol.TabIndex = 9;
@@ -143,7 +144,7 @@
             // botonok
             // 
             botonok.Location = new Point(277, 509);
-            botonok.Margin = new Padding(4, 4, 4, 4);
+            botonok.Margin = new Padding(4);
             botonok.Name = "botonok";
             botonok.Size = new Size(118, 36);
             botonok.TabIndex = 11;
@@ -154,7 +155,7 @@
             // botoncancel
             // 
             botoncancel.Location = new Point(492, 509);
-            botoncancel.Margin = new Padding(4, 4, 4, 4);
+            botoncancel.Margin = new Padding(4);
             botoncancel.Name = "botoncancel";
             botoncancel.Size = new Size(118, 36);
             botoncancel.TabIndex = 12;
@@ -165,7 +166,7 @@
             // txtUsuario
             // 
             txtUsuario.Location = new Point(248, 355);
-            txtUsuario.Margin = new Padding(4, 4, 4, 4);
+            txtUsuario.Margin = new Padding(4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(400, 32);
             txtUsuario.TabIndex = 13;
@@ -173,7 +174,7 @@
             // txtCedula
             // 
             txtCedula.Location = new Point(252, 205);
-            txtCedula.Margin = new Padding(4, 4, 4, 4);
+            txtCedula.Margin = new Padding(4);
             txtCedula.Name = "txtCedula";
             txtCedula.Size = new Size(395, 32);
             txtCedula.TabIndex = 14;
@@ -209,7 +210,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 11F);
-            Margin = new Padding(4, 4, 4, 4);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4);
             Name = "AgregarUsuario";
             Text = "AgregarUsuario";
             ResumeLayout(false);

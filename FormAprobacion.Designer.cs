@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAprobacion));
             lstHistorial = new ListBox();
             btnAprobar = new Button();
             btnRechazar = new Button();
@@ -53,7 +54,7 @@
             // 
             // btnAprobar
             // 
-            btnAprobar.Location = new Point(235, 456);
+            btnAprobar.Location = new Point(249, 456);
             btnAprobar.Margin = new Padding(4);
             btnAprobar.Name = "btnAprobar";
             btnAprobar.Size = new Size(241, 62);
@@ -64,7 +65,7 @@
             // 
             // btnRechazar
             // 
-            btnRechazar.Location = new Point(484, 456);
+            btnRechazar.Location = new Point(498, 456);
             btnRechazar.Margin = new Padding(4);
             btnRechazar.Name = "btnRechazar";
             btnRechazar.Size = new Size(245, 62);
@@ -85,7 +86,7 @@
             // 
             // btnDeshacerAprovacion
             // 
-            btnDeshacerAprovacion.Location = new Point(15, 456);
+            btnDeshacerAprovacion.Location = new Point(29, 456);
             btnDeshacerAprovacion.Margin = new Padding(4);
             btnDeshacerAprovacion.Name = "btnDeshacerAprovacion";
             btnDeshacerAprovacion.Size = new Size(212, 62);
@@ -130,7 +131,7 @@
             // lblPendientes
             // 
             lblPendientes.AutoSize = true;
-            lblPendientes.Location = new Point(131, 381);
+            lblPendientes.Location = new Point(129, 381);
             lblPendientes.Name = "lblPendientes";
             lblPendientes.Size = new Size(128, 25);
             lblPendientes.TabIndex = 14;
@@ -171,6 +172,7 @@
             Controls.Add(btnAprobar);
             Controls.Add(lstHistorial);
             Font = new Font("Segoe UI", 11F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FormAprobacion";
             StartPosition = FormStartPosition.CenterScreen;

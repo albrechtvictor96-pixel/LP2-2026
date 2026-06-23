@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroCompras));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -59,7 +60,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 148);
+            label2.Location = new Point(1, 148);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(219, 25);
@@ -88,10 +89,10 @@
             // 
             btnRegistrar.BackColor = Color.White;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(53, 418);
+            btnRegistrar.Location = new Point(85, 418);
             btnRegistrar.Margin = new Padding(4);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(279, 105);
+            btnRegistrar.Size = new Size(279, 98);
             btnRegistrar.TabIndex = 6;
             btnRegistrar.Text = "Registrar Pedido";
             btnRegistrar.UseVisualStyleBackColor = false;
@@ -99,7 +100,7 @@
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(226, 144);
+            txtDescripcion.Location = new Point(226, 145);
             txtDescripcion.Margin = new Padding(4);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(308, 32);
@@ -108,11 +109,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(82, 11);
+            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(85, 25);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(227, 31);
+            label4.Size = new Size(235, 31);
             label4.TabIndex = 8;
             label4.Text = "Registro de Compras";
             // 
@@ -137,15 +138,17 @@
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(647, 82);
+            dtpFecha.Enabled = false;
+            dtpFecha.Location = new Point(645, 76);
             dtpFecha.Margin = new Padding(4);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(312, 32);
             dtpFecha.TabIndex = 12;
+            dtpFecha.Value = new DateTime(2026, 6, 23, 11, 32, 59, 0);
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(477, 310);
+            btnEditar.Location = new Point(509, 310);
             btnEditar.Margin = new Padding(4);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(208, 70);
@@ -156,7 +159,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(739, 310);
+            btnEliminar.Location = new Point(760, 310);
             btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(208, 70);
@@ -168,12 +171,13 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(783, 16);
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label7.Location = new Point(760, 26);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(61, 25);
+            label7.Size = new Size(74, 28);
             label7.TabIndex = 15;
-            label7.Text = "Fecha";
+            label7.Text = "FECHA";
             // 
             // txtCantidad
             // 
@@ -186,18 +190,18 @@
             // cmbFacultad
             // 
             cmbFacultad.FormattingEnabled = true;
-            cmbFacultad.Items.AddRange(new object[] { "CYT", "CSQ", "FCE" });
+            cmbFacultad.Items.AddRange(new object[] { "Facultad de Ciencias Jurídicas", "", "", "Facultad de Ciencias Contables", "", "", "Facultad de Ciencias de la Salud ", "", "", "Facultad de Ciencias y Tecnología " });
             cmbFacultad.Location = new Point(114, 282);
             cmbFacultad.Margin = new Padding(4);
             cmbFacultad.Name = "cmbFacultad";
-            cmbFacultad.Size = new Size(198, 33);
+            cmbFacultad.Size = new Size(355, 33);
             cmbFacultad.TabIndex = 18;
             // 
             // btnVolver
             // 
             btnVolver.BackColor = Color.White;
             btnVolver.FlatStyle = FlatStyle.Flat;
-            btnVolver.Location = new Point(559, 454);
+            btnVolver.Location = new Point(645, 433);
             btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(234, 69);
@@ -228,6 +232,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 11F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "RegistroCompras";
             StartPosition = FormStartPosition.CenterScreen;

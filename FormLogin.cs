@@ -15,9 +15,9 @@ namespace TP_LP2
             InitializeComponent();
         }
 
-        private void btnIngresar_Click_1(object sender, EventArgs e)
+        private void btnIngresar_Click_1(object sender, EventArgs e)//evento que se ejecuta al hacer click en el boton ingresar
         {
-         
+
             string usuarioIngresado = txtusuario.Text.Trim();
             string passwordIngresada = txtpassword.Text.Trim();
 
@@ -27,8 +27,8 @@ namespace TP_LP2
                 return;
             }
 
-            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
-            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
+            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");// Ruta de la carpeta donde se encuentra el archivo JSON
+            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");// Ruta completa del archivo JSON
 
             if (!File.Exists(rutaJson))
             {
@@ -38,9 +38,9 @@ namespace TP_LP2
 
             try
             {
-                string json = File.ReadAllText(rutaJson);
-                List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>();
-
+                string json = File.ReadAllText(rutaJson); // Leemos el contenido del archivo JSON
+                List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json) ?? new List<Usuario>(); // Deserializamos el JSON a una lista de usuarios
+                // Buscamos el usuario ingresado en la lista de usuarios
                 Usuario usuarioEncontrado = usuarios.FirstOrDefault(u =>
                     u.Username.Equals(usuarioIngresado, StringComparison.OrdinalIgnoreCase) &&
                     u.Password == passwordIngresada
@@ -48,12 +48,12 @@ namespace TP_LP2
 
                 if (usuarioEncontrado != null)
                 {
-                    // 🚀 ASIGNACIÓN DIRECTA: Guardamos el rol del JSON en nuestra variable común
+                    //Guardamos el rol del JSON en nuestra variable común
                     Usuario.RolUsuarioLogueado = usuarioEncontrado.Rol;
 
-                    MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre}! Entrando como {Usuario.RolUsuarioLogueado}.", "Éxito");
+                    MessageBox.Show($"¡Bienvenido, {usuarioEncontrado.Nombre} Entrando como {Usuario.RolUsuarioLogueado}.", "Éxito");
 
-                    // Abrimos el menú principal completamente vacío y normal, como a vos te gusta
+                    // Abrimos el menú principal completamente vacío y normal
                     FormMenuPrincipal menu = new FormMenuPrincipal();
                     menu.Show();
 
@@ -77,9 +77,9 @@ namespace TP_LP2
             this.Hide();
         }
 
-        private void btnMostrarOcultar_Click(object sender, EventArgs e)
+        private void btnMostrarOcultar_Click(object sender, EventArgs e) //boton para mostrar y ocultar contraseña
         {
-            if (txtpassword.PasswordChar == '*')
+            if (txtpassword.PasswordChar == '*')//si el passwordchar es *, entonces lo cambiamos a \0 para mostrar la contraseña
             {
 
                 txtpassword.PasswordChar = '\0';
@@ -87,11 +87,17 @@ namespace TP_LP2
                 btnMostrarOcultar.Text = ":)";
 
             }
-            else
+            else //si el passwordchar es \0, entonces lo cambiamos a * para ocultar la contraseña
             {
                 txtpassword.PasswordChar = '*';
                 btnMostrarOcultar.Text = "👁";
             }
+        }
+        private void FormLogin_Load(object sender, EventArgs e) //evento que se ejecuta al cargar el formulario
+        {
+            // Establecer el PasswordChar al cargar el formulario
+            txtpassword.PasswordChar = '*';
+
         }
     }
 }

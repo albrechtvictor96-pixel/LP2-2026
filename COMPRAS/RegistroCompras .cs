@@ -20,12 +20,12 @@ namespace TP_LP2
         
         private bool esNuevo = true;// Variable para controlar si estamos editando un pedido existente o registrando uno nuevo
         private string idPedidoEditando = ""; // Variable para almacenar el ID del pedido que se está editando (si es el caso)
-        private Queue<Pedidos> solicitudes = new Queue<Pedidos>();
-        private string rutaJson = Path.Combine(Application.StartupPath, "compras.json");
+        private Queue<Pedidos> solicitudes = new Queue<Pedidos>();// Cola para almacenar los pedidos en memoria
+        private string rutaJson = Path.Combine(Application.StartupPath, "compras.json");// Ruta del archivo JSON donde se guardarán los pedidos
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e) // Botón para registrar o actualizar un pedido
         {
-            // 1. Validacion de entradas 
+            // Validacion de entradas 
             if (string.IsNullOrWhiteSpace(cmbFacultad.Text) ||
                 string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
@@ -35,17 +35,17 @@ namespace TP_LP2
                 return;
             }
 
-            // 2. Validacion de cantidad 
+            //Validacion de cantidad 
             if (!int.TryParse(txtCantidad.Text, out int cantidad) || cantidad <= 0)
             {
                 MessageBox.Show("Ingrese una cantidad válida (número entero positivo).");
                 return;
             }
 
-            // // 3. Decidir si se crea uno nuevo o se edita el actual
+            // Decidir si se crea uno nuevo o se edita el actual
             if (esNuevo)
             {
-                // CAMINO A: PEDIDO NUEVO
+                // Creamos un nuevo pedido 
                 Pedidos nuevoPedido = new Pedidos
                 {
                     facultad = cmbFacultad.Text,
@@ -55,13 +55,11 @@ namespace TP_LP2
                     cantidad = cantidad,
                     estado = "Pendiente"
                 };
-                // C# le asigna automáticamente el Guid.NewGuid() de Solicitud.cs
-
-                solicitudes.Enqueue(nuevoPedido);
+                solicitudes.Enqueue(nuevoPedido);// Agregamos el nuevo pedido a la cola
             }
             else
             {
-                // --- CAMINO B: EDICIÓN DE UN PEDIDO (No agrega filas, modifica en la cola) ---
+                // Edicion de un pedido existente
                 // Convertimos temporalmente a lista para buscar y modificar el Guid guardado
                 var listaTemporal = new List<Pedidos>(solicitudes);
                 Pedidos pedidoExistente = listaTemporal.Find(p => p.id == idPedidoEditando);
@@ -79,7 +77,7 @@ namespace TP_LP2
                 solicitudes = new Queue<Pedidos>(listaTemporal);
             }
 
-            // 4. Guardar la cola actualizada en el archivo JSON
+            //  Guardar la cola actualizada en el archivo JSON
             try
             {
                 var listaParaGuardar = new List<Pedidos>(solicitudes);
@@ -91,7 +89,7 @@ namespace TP_LP2
 
                 MessageBox.Show("Operación procesada con éxito y guardada en el archivo.", "Éxito");
 
-                // 5. Limpiamos los cuadros y reseteamos variables de control
+                //  Limpiamos los cuadros y reseteamos variables de control
                 cmbFacultad.SelectedIndex = -1;
                 txtNombre.Clear();
                 txtDescripcion.Clear();
@@ -128,7 +126,7 @@ namespace TP_LP2
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            // 1. Validamos si hay pedidos cargados en la cola para poder eliminar
+            // Validamos si hay pedidos cargados en la cola para poder eliminar
             if (solicitudes.Count == 0)
             {
                 MessageBox.Show("No hay ningún pedido en pantalla para eliminar.", "Atención");
@@ -146,7 +144,7 @@ namespace TP_LP2
                 return; // Si el usuario tocó el botón por error y le da a "No", el programa no hace nada
             }
 
-            // 3. Pasamos la cola a una lista temporal para poder buscar y remover por ID 
+            //  Pasamos la cola a una lista temporal para poder buscar y remover por ID 
             var listaTemporal = new List<Pedidos>(solicitudes);
 
             // Buscamos el pedido en la lista que coincida con el Guid del pedido en pantalla
@@ -154,13 +152,13 @@ namespace TP_LP2
 
             if (aEliminar != null)
             {
-                // 4. Lo removemos de la lista en memoria
+                // Lo removemos de la lista en memoria
                 listaTemporal.Remove(aEliminar);
 
-                // 5. Reconstruimos tu cola original con los elementos restantes
+                //  Reconstruimos tu cola original con los elementos restantes
                 solicitudes = new Queue<Pedidos>(listaTemporal);
 
-                // 6. Guardamos la cola limpia de vuelta en el archivo compras.json
+                // Guardamos la cola limpia de vuelta en el archivo compras.json
                 try
                 {
                     var opciones = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
@@ -171,13 +169,13 @@ namespace TP_LP2
 
                     MessageBox.Show("Pedido eliminado con éxito.", "Éxito");
 
-                    // 7. Limpiamos por completo los TextBox para que la pantalla no quede con datos viejos
+                    //  Limpiamos por completo los TextBox para que la pantalla no quede con datos viejos
                     cmbFacultad.SelectedIndex = -1;
                     txtNombre.Clear();
                     txtDescripcion.Clear();
                     txtCantidad.Clear();
 
-                    // 8. Opcional: Si tenés una función que vuelve a hacer Peek() para mostrar el siguiente pedido en cola, la llamás acá.
+                    // Opcional: Si tenés una función que vuelve a hacer Peek() para mostrar el siguiente pedido en cola, la llamás acá.
                 }
                 catch (Exception ex)
                 {
@@ -185,7 +183,7 @@ namespace TP_LP2
                 }
             }
         }
-        private void GuardarEnJson()
+        private void GuardarEnJson() // Función para guardar la cola de pedidos en un archivo JSON
         {
             try
             {
@@ -197,7 +195,7 @@ namespace TP_LP2
                 MessageBox.Show("Error al guardar en JSON: " + ex.Message);
             }
         }
-        private void LimpiarCampos()
+        private void LimpiarCampos()// Función para limpiar los campos de entrada
         {
             cmbFacultad.SelectedIndex = -1;
             txtNombre.Clear();
@@ -205,7 +203,7 @@ namespace TP_LP2
             txtCantidad.Clear();
             dtpFecha.Value = DateTime.Now;
         }
-        private void CargarDesdeJson()
+        private void CargarDesdeJson()// Función para cargar la cola de pedidos desde un archivo JSON
         {
             try
             {

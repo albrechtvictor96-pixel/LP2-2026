@@ -18,7 +18,7 @@ namespace TP_LP2
             CargarUsuariosEnGrilla();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e) //boton eliminar usuario
         {
             if (dgvUsuarios.CurrentRow != null)// Verificar que hay una fila seleccionada
             {
@@ -49,11 +49,11 @@ namespace TP_LP2
             }
         }
 
-        private void FormGestionUsuarios_Load(object sender, EventArgs e)
+        private void FormGestionUsuarios_Load(object sender, EventArgs e) //evento que se ejecuta al cargar el formulario
         {
             CargarUsuariosEnTabla();
         }
-        private void CargarUsuariosEnTabla()
+        private void CargarUsuariosEnTabla() //método para cargar los usuarios desde el archivo JSON y mostrarlos en el DataGridView
         {
             string carpetaUsuarios =
                 Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
@@ -82,7 +82,7 @@ namespace TP_LP2
             this.Close();//Cerrar el formulario actual de gestión de usuarios
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e) //botón para modificar los usuarios
         {
             List<Usuario> listaActual = (List<Usuario>)dgvUsuarios.DataSource;
             if (listaActual != null)
@@ -102,7 +102,7 @@ namespace TP_LP2
             }
         }
 
-        private void btnRegistrarNuevo_Click(object sender, EventArgs e)
+        private void btnRegistrarNuevo_Click(object sender, EventArgs e) //botón para registrar un nuevo usuario
         {
             // Abrir el formulario de registro para agregar un nuevo usuario
             AgregarUsuario pantallaRegistro = new AgregarUsuario();
@@ -112,7 +112,7 @@ namespace TP_LP2
             CargarUsuariosEnTabla();
             CargarUsuariosEnGrilla();
         }
-        private void CargarUsuariosEnGrilla()
+        private void CargarUsuariosEnGrilla() //método para cargar los usuarios desde el archivo JSON y mostrarlos en el DataGridView
         {
             string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
             string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");

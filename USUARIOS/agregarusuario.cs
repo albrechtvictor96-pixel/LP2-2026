@@ -13,9 +13,9 @@ namespace TP_LP2
             InitializeComponent();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)//Boton de agregar usuario
         {
-            // 1. Capturar datos sacando espacios
+            // Capturar datos sacando espacios
             string nombre = txtNombre.Text.Trim();
             string apellido = txtApellido.Text.Trim();
             string username = txtUsuario.Text.Trim();
@@ -27,7 +27,7 @@ namespace TP_LP2
                 MessageBox.Show("Por favor, complete los campos obligatorios y seleccione un rol.", "Campos vacíos");
                 return;
             }
-            string rolSeleccionado = cmbRol.SelectedItem.ToString();
+            string rolSeleccionado = cmbRol.SelectedItem.ToString();// Guardamos el rol elegido del combo
 
             // 2. Ruta inteligente en la carpeta USUARIOS
             string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
@@ -61,11 +61,11 @@ namespace TP_LP2
                 Apellido = apellido,
                 Username = username,
                 Password = password,
-                Rol = rolSeleccionado, //  Guardamos el rol elegido del combo
+                Rol = rolSeleccionado, 
                 Cedula = cedula
             };
 
-            listaUsuarios.Add(nuevoUsuario);
+            listaUsuarios.Add(nuevoUsuario); // Agregamos el nuevo usuario a la lista
 
             // 5. Guardamos la lista unificada en el JSON
             try
@@ -87,6 +87,7 @@ namespace TP_LP2
 
         private void botoncancel_Click(object sender, EventArgs e)
         {
+            //borramos los campos y cerramos la ventana
             this.Close();
         }
     }

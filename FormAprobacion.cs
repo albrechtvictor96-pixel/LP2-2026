@@ -8,11 +8,11 @@ namespace TP_LP2
 {
     public partial class FormAprobacion : Form
     {
-        private string rutaCola = Path.Combine(Application.StartupPath, "compras.json");
-        private string rutaHistorial = Path.Combine(Application.StartupPath, "historial.json");
+        private string rutaCola = Path.Combine(Application.StartupPath, "compras.json"); //ruta del archivo JSON que almacena la cola de pedidos pendientes
+        private string rutaHistorial = Path.Combine(Application.StartupPath, "historial.json"); //ruta del archivo JSON que almacena el historial de pedidos procesados
 
-        private Queue<Pedidos> colaPedidos = new Queue<Pedidos>();
-        private Stack<Pedidos> pilaHistorial = new Stack<Pedidos>();
+        private Queue<Pedidos> colaPedidos = new Queue<Pedidos>();//cola de pedidos pendientes
+        private Stack<Pedidos> pilaHistorial = new Stack<Pedidos>();//pila de pedidos procesados (aprobados o rechazados)
 
         public FormAprobacion()
         {
@@ -40,7 +40,7 @@ namespace TP_LP2
             // 2. Cargamos el historial delegando la función para evitar duplicados
             CargarHistorialDesdeJson();
         }
-        private void ActualizarGridPendientes()
+        private void ActualizarGridPendientes() //actualiza el datagridview con los pedidos pendientes en la cola, mostrando solo los campos relevantes y renombrando las columnas para mayor claridad
         {
             dgvPendientes.DataSource = null;
             if (colaPedidos != null && colaPedidos.Count > 0)
@@ -80,7 +80,7 @@ namespace TP_LP2
             ActualizarReportes();//y actualizamos los reportes para reflejar el nuevo conteo de pedidos pendientes, aprobados y rechazados
         }
 
-        private void GuardarTodo()
+        private void GuardarTodo()//guarda tanto la cola de pedidos pendientes como el historial de pedidos procesados en sus respectivos archivos JSON
         {
             try
             {
@@ -167,7 +167,6 @@ namespace TP_LP2
         private void ActualizarReportes()
         {
             int totalPendientes = colaPedidos.Count;//contamos los pedidos pendientes en la cola
-
             int totalAprobados = 0;//contamos los pedidos aprobados en la pila del historial
             int totalRechazados = 0;//contamos los pedidos rechazados en la pila del historial
             foreach(var pedido in pilaHistorial)

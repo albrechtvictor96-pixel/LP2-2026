@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionUsuarios));
             dgvUsuarios = new DataGridView();
             btnModificar = new Button();
             btnEliminar = new Button();
@@ -39,16 +40,16 @@
             // dgvUsuarios
             // 
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(148, 36);
+            dgvUsuarios.Location = new Point(75, 24);
             dgvUsuarios.Margin = new Padding(4);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(690, 288);
+            dgvUsuarios.Size = new Size(841, 332);
             dgvUsuarios.TabIndex = 0;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(129, 376);
+            btnModificar.Location = new Point(118, 376);
             btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(189, 44);
@@ -70,7 +71,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(628, 376);
+            btnVolver.Location = new Point(648, 376);
             btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(175, 44);
@@ -81,12 +82,12 @@
             // 
             // btnRegistrarNuevo
             // 
-            btnRegistrarNuevo.Location = new Point(391, 464);
+            btnRegistrarNuevo.Location = new Point(352, 466);
             btnRegistrarNuevo.Margin = new Padding(4);
             btnRegistrarNuevo.Name = "btnRegistrarNuevo";
-            btnRegistrarNuevo.Size = new Size(168, 44);
+            btnRegistrarNuevo.Size = new Size(244, 71);
             btnRegistrarNuevo.TabIndex = 4;
-            btnRegistrarNuevo.Text = "Registrar Nuevo";
+            btnRegistrarNuevo.Text = "Registrar Nuevo Usuario";
             btnRegistrarNuevo.UseVisualStyleBackColor = true;
             btnRegistrarNuevo.Click += btnRegistrarNuevo_Click;
             // 
@@ -101,6 +102,7 @@
             Controls.Add(btnModificar);
             Controls.Add(dgvUsuarios);
             Font = new Font("Segoe UI", 11F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FormGestionUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
