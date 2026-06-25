@@ -77,10 +77,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(685, 24);
+            label4.Font = new Font("Segoe UI", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(701, 9);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(87, 25);
+            label4.Size = new Size(113, 31);
             label4.TabIndex = 9;
             label4.Text = "Historial ";
             // 
@@ -97,12 +98,15 @@
             // 
             // dgvPendientes
             // 
+            dgvPendientes.AllowUserToAddRows = false;
+            dgvPendientes.AllowUserToDeleteRows = false;
             dgvPendientes.BackgroundColor = SystemColors.Window;
             dgvPendientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPendientes.GridColor = SystemColors.ControlText;
             dgvPendientes.Location = new Point(2, 56);
             dgvPendientes.Margin = new Padding(4);
             dgvPendientes.Name = "dgvPendientes";
+            dgvPendientes.ReadOnly = true;
             dgvPendientes.RowHeadersWidth = 51;
             dgvPendientes.Size = new Size(474, 305);
             dgvPendientes.TabIndex = 11;
@@ -110,10 +114,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(96, 24);
+            label1.Font = new Font("Segoe UI", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(115, 9);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(175, 25);
+            label1.Size = new Size(221, 31);
             label1.TabIndex = 12;
             label1.Text = "Pedidos Pendientes";
             // 
@@ -131,27 +136,30 @@
             // lblPendientes
             // 
             lblPendientes.AutoSize = true;
-            lblPendientes.Location = new Point(129, 381);
+            lblPendientes.Font = new Font("Segoe UI", 12F);
+            lblPendientes.Location = new Point(128, 381);
             lblPendientes.Name = "lblPendientes";
-            lblPendientes.Size = new Size(128, 25);
+            lblPendientes.Size = new Size(131, 28);
             lblPendientes.TabIndex = 14;
             lblPendientes.Text = "Pendientes: 0 ";
             // 
             // lblAprobados
             // 
             lblAprobados.AutoSize = true;
+            lblAprobados.Font = new Font("Segoe UI", 12F);
             lblAprobados.Location = new Point(540, 381);
             lblAprobados.Name = "lblAprobados";
-            lblAprobados.Size = new Size(123, 25);
+            lblAprobados.Size = new Size(130, 28);
             lblAprobados.TabIndex = 15;
             lblAprobados.Text = "Aprobados: 0";
             // 
             // lblRechazados
             // 
             lblRechazados.AutoSize = true;
+            lblRechazados.Font = new Font("Segoe UI", 12F);
             lblRechazados.Location = new Point(751, 381);
             lblRechazados.Name = "lblRechazados";
-            lblRechazados.Size = new Size(130, 25);
+            lblRechazados.Size = new Size(134, 28);
             lblRechazados.TabIndex = 16;
             lblRechazados.Text = "Rechazados: 0";
             // 

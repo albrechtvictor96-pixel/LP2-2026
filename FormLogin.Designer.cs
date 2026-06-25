@@ -36,13 +36,14 @@
             btningresar = new Button();
             btnMostrarOcultar = new Button();
             pictureBox1 = new PictureBox();
+            btnSalir = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(250, 200);
+            label1.Location = new Point(228, 196);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(77, 25);
@@ -52,7 +53,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(230, 249);
+            label2.Location = new Point(212, 276);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(108, 25);
@@ -61,7 +62,7 @@
             // 
             // txtusuario
             // 
-            txtusuario.Location = new Point(364, 193);
+            txtusuario.Location = new Point(348, 193);
             txtusuario.Margin = new Padding(4);
             txtusuario.Name = "txtusuario";
             txtusuario.Size = new Size(262, 32);
@@ -69,7 +70,7 @@
             // 
             // txtpassword
             // 
-            txtpassword.Location = new Point(364, 242);
+            txtpassword.Location = new Point(348, 273);
             txtpassword.Margin = new Padding(4);
             txtpassword.Name = "txtpassword";
             txtpassword.PasswordChar = '*';
@@ -78,10 +79,10 @@
             // 
             // btningresar
             // 
-            btningresar.Location = new Point(364, 358);
+            btningresar.Location = new Point(348, 359);
             btningresar.Margin = new Padding(4);
             btningresar.Name = "btningresar";
-            btningresar.Size = new Size(201, 56);
+            btningresar.Size = new Size(264, 71);
             btningresar.TabIndex = 4;
             btningresar.Text = "Ingresar";
             btningresar.UseVisualStyleBackColor = true;
@@ -89,10 +90,10 @@
             // 
             // btnMostrarOcultar
             // 
-            btnMostrarOcultar.FlatStyle = FlatStyle.Flat;
-            btnMostrarOcultar.Location = new Point(654, 242);
+            btnMostrarOcultar.FlatStyle = FlatStyle.System;
+            btnMostrarOcultar.Location = new Point(617, 273);
             btnMostrarOcultar.Name = "btnMostrarOcultar";
-            btnMostrarOcultar.Size = new Size(42, 36);
+            btnMostrarOcultar.Size = new Size(42, 32);
             btnMostrarOcultar.TabIndex = 7;
             btnMostrarOcultar.Text = "👁";
             btnMostrarOcultar.UseVisualStyleBackColor = true;
@@ -104,17 +105,28 @@
             pictureBox1.ErrorImage = null;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.InitialImage = null;
-            pictureBox1.Location = new Point(406, 12);
+            pictureBox1.Location = new Point(414, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(111, 126);
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(392, 483);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(175, 67);
+            btnSalir.TabIndex = 9;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(934, 602);
+            Controls.Add(btnSalir);
             Controls.Add(pictureBox1);
             Controls.Add(btnMostrarOcultar);
             Controls.Add(btningresar);
@@ -144,5 +156,6 @@
         private Button btningresar;
         private Button btnMostrarOcultar;
         private PictureBox pictureBox1;
+        private Button btnSalir;
     }
 }

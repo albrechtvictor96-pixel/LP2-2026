@@ -22,7 +22,7 @@ namespace TP_LP2
         {
             if (dgvUsuarios.CurrentRow != null)// Verificar que hay una fila seleccionada
             {
-                Usuario usuarioSeleccionado = (Usuario)dgvUsuarios.CurrentRow.DataBoundItem;
+                Usuario usuarioSeleccionado = (Usuario)dgvUsuarios.CurrentRow.DataBoundItem; // Obtener el usuario seleccionado de la fila actual
                 DialogResult resultado = MessageBox.Show($"¿Estás seguro de eliminar al usuario {usuarioSeleccionado.Username}?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resultado == DialogResult.Yes)
                 {
@@ -33,7 +33,7 @@ namespace TP_LP2
                     string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
                     try
                     {
-                        string jsonActualizado = JsonSerializer.Serialize(listaActual, new JsonSerializerOptions { WriteIndented = true });
+                        string jsonActualizado = JsonSerializer.Serialize(listaActual, new JsonSerializerOptions { WriteIndented = true }); //serializar la lista actualizada a JSON
                         File.WriteAllText(rutaJson, jsonActualizado);
                         CargarUsuariosEnTabla();
                     }
@@ -55,16 +55,15 @@ namespace TP_LP2
         }
         private void CargarUsuariosEnTabla() //método para cargar los usuarios desde el archivo JSON y mostrarlos en el DataGridView
         {
-            string carpetaUsuarios =
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
-            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
+            string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS"); // Obtener la ruta de la carpeta "USUARIOS" en el directorio base de la aplicación
+            string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json"); // Construir la ruta completa del archivo "usuarios.json" dentro de la carpeta "USUARIOS"
 
             if (File.Exists(rutaJson))
             {
                 try
                 {
-                    string json = File.ReadAllText(rutaJson);
-                    List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json);
+                    string json = File.ReadAllText(rutaJson); // Leer el contenido del archivo JSON
+                    List<Usuario> usuarios = JsonSerializer.Deserialize<List<Usuario>>(json); // Deserializar el contenido JSON a una lista de objetos Usuario
                     dgvUsuarios.DataSource = usuarios;
                 }
                 catch (Exception ex)
@@ -84,11 +83,11 @@ namespace TP_LP2
 
         private void btnModificar_Click(object sender, EventArgs e) //botón para modificar los usuarios
         {
-            List<Usuario> listaActual = (List<Usuario>)dgvUsuarios.DataSource;
+            List<Usuario> listaActual = (List<Usuario>)dgvUsuarios.DataSource; // Obtener la lista actual de usuarios desde el DataGridView
             if (listaActual != null)
             {
-                string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
-                string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
+                string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");// Obtener la ruta de la carpeta "USUARIOS" en el directorio base de la aplicación
+                string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");// Construir la ruta completa del archivo "usuarios.json" dentro de la carpeta "USUARIOS"
                 try
                 {
                     string nuevoJson = JsonSerializer.Serialize(listaActual, new JsonSerializerOptions { WriteIndented = true });

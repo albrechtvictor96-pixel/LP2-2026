@@ -25,7 +25,7 @@ namespace TP_LP2
 
         private void CargarDatos()//carga los datos de la cola de pedidos y el historial desde los archivos JSON, si existen
         {
-            // 1. Cargamos la cola de pedidos pendientes
+            // Cargamos la cola de pedidos pendientes
             if (File.Exists(rutaCola))
             {
                 try
@@ -37,7 +37,7 @@ namespace TP_LP2
                 catch { }
             }
 
-            // 2. Cargamos el historial delegando la función para evitar duplicados
+            // Cargamos el historial delegando la función para evitar duplicados
             CargarHistorialDesdeJson();
         }
         private void ActualizarGridPendientes() //actualiza el datagridview con los pedidos pendientes en la cola, mostrando solo los campos relevantes y renombrando las columnas para mayor claridad
@@ -84,13 +84,13 @@ namespace TP_LP2
         {
             try
             {
-                var listaCola = new List<Pedidos>(colaPedidos);
-                string jsonCola = JsonSerializer.Serialize(listaCola, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(rutaCola, jsonCola);
-                var listaHistorial = pilaHistorial.ToArray();
+                var listaCola = new List<Pedidos>(colaPedidos); // convertimos la cola a lista para poder serializarla 
+                string jsonCola = JsonSerializer.Serialize(listaCola, new JsonSerializerOptions { WriteIndented = true }); // serializamos la lista a JSON con formato indentado para mayor legibilidad 
+                File.WriteAllText(rutaCola, jsonCola); // guardamos el JSON en el archivo correspondiente
+                var listaHistorial = pilaHistorial.ToArray(); // convertimos la pila a array para poder serializarla
                 Array.Reverse(listaHistorial); // Invertimos para guardar en orden correcto
-                string jsonHistorial = JsonSerializer.Serialize(listaHistorial, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(rutaHistorial, jsonHistorial);
+                string jsonHistorial = JsonSerializer.Serialize(listaHistorial, new JsonSerializerOptions { WriteIndented = true }); // serializamos el array a JSON con formato indentado para mayor legibilidad
+                File.WriteAllText(rutaHistorial, jsonHistorial); // guardamos el JSON en el archivo correspondiente
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace TP_LP2
         private void ActualizarListBoxHistorial()//actualiza el listbox con el historial de pedidos procesados, mostrando la fecha, nombre, cantidad y descripción de cada pedido
         {
             lstHistorial.Items.Clear();
-            foreach (var ped in pilaHistorial)
+            foreach (var ped in pilaHistorial) //recorremos la pila del historial y agregamos cada pedido al listbox con el formato deseado
             {
                 lstHistorial.Items.Add($"[{ped.estado} {ped.fecha:dd/MM/yyyy}] {ped.nombre} - {ped.cantidad} unidades - {ped.descripcion}");
             }
@@ -113,8 +113,8 @@ namespace TP_LP2
             {
                 try
                 {
-                    string json = File.ReadAllText(rutaHistorial);
-                    var lista = System.Text.Json.JsonSerializer.Deserialize<List<Pedidos>>(json);
+                    string json = File.ReadAllText(rutaHistorial); // Leemos el contenido del archivo JSON
+                    var lista = System.Text.Json.JsonSerializer.Deserialize<List<Pedidos>>(json); // Deserializamos el JSON a una lista de pedidos
                     if (lista != null)
                     {
                         // Invertimos la lista para que al meterla a la pila mantenga el orden original LIFO
@@ -126,12 +126,12 @@ namespace TP_LP2
             }
         }
 
-        private void btnAprobar_Click(object sender, EventArgs e)
+        private void btnAprobar_Click(object sender, EventArgs e) //procesa el pedido actual, lo mueve a la pila de historial con el estado "Aprobado" y guarda los cambios en los archivos JSON
         {
             ProcesarPedido("Aprobado");
         }
 
-        private void btnRechazar_Click(object sender, EventArgs e)
+        private void btnRechazar_Click(object sender, EventArgs e) //procesa el pedido actual, lo mueve a la pila de historial con el estado "Rechazado" y guarda los cambios en los archivos JSON
         {
             ProcesarPedido("Rechazado");
         }
@@ -164,7 +164,7 @@ namespace TP_LP2
         {
             this.Close();//Cierra la ventana actual y vuelve a la pantalla anterior
         }
-        private void ActualizarReportes()
+        private void ActualizarReportes() //actualiza los labels con el conteo de pedidos pendientes, aprobados y rechazados
         {
             int totalPendientes = colaPedidos.Count;//contamos los pedidos pendientes en la cola
             int totalAprobados = 0;//contamos los pedidos aprobados en la pila del historial

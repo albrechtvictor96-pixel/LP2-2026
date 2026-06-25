@@ -53,9 +53,9 @@
             label1.Location = new Point(15, 219);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(93, 25);
+            label1.Size = new Size(137, 25);
             label1.TabIndex = 0;
-            label1.Text = "Cantidad ";
+            label1.Text = "Cantidad (Nro)";
             // 
             // label2
             // 
@@ -109,11 +109,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(85, 25);
+            label4.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            label4.Location = new Point(85, 23);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(235, 31);
+            label4.Size = new Size(252, 32);
             label4.TabIndex = 8;
             label4.Text = "Registro de Compras";
             // 
@@ -172,7 +172,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label7.Location = new Point(760, 26);
+            label7.Location = new Point(760, 27);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(74, 28);
@@ -181,7 +181,7 @@
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(114, 215);
+            txtCantidad.Location = new Point(156, 216);
             txtCantidad.Margin = new Padding(4);
             txtCantidad.Name = "txtCantidad";
             txtCantidad.Size = new Size(313, 32);
@@ -190,7 +190,7 @@
             // cmbFacultad
             // 
             cmbFacultad.FormattingEnabled = true;
-            cmbFacultad.Items.AddRange(new object[] { "Facultad de Ciencias Jurídicas", "", "", "Facultad de Ciencias Contables", "", "", "Facultad de Ciencias de la Salud ", "", "", "Facultad de Ciencias y Tecnología " });
+            cmbFacultad.Items.AddRange(new object[] { "Facultad de Ciencias Jurídicas", "Facultad de Ciencias Contables", "Facultad de Ciencias de la Salud ", "Facultad de Ciencias y Tecnología " });
             cmbFacultad.Location = new Point(114, 282);
             cmbFacultad.Margin = new Padding(4);
             cmbFacultad.Name = "cmbFacultad";
@@ -201,7 +201,7 @@
             // 
             btnVolver.BackColor = Color.White;
             btnVolver.FlatStyle = FlatStyle.Flat;
-            btnVolver.Location = new Point(645, 433);
+            btnVolver.Location = new Point(621, 433);
             btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(234, 69);

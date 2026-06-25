@@ -29,45 +29,45 @@ namespace TP_LP2
             }
             string rolSeleccionado = cmbRol.SelectedItem.ToString();// Guardamos el rol elegido del combo
 
-            // 2. Ruta inteligente en la carpeta USUARIOS
+            //  Ruta inteligente en la carpeta USUARIOS
             string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");
             string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");
 
             List<Usuario> listaUsuarios = new List<Usuario>();
 
-            // 3. Si el archivo ya existe, cargamos los usuarios viejos para no borrarlos
+            // Si el archivo ya existe, cargamos los usuarios viejos para no borrarlos
             if (File.Exists(rutaJson))
             {
                 try
                 {
-                    string jsonViejo = File.ReadAllText(rutaJson);
-                    if (!string.IsNullOrEmpty(jsonViejo))
+                    string jsonViejo = File.ReadAllText(rutaJson); // Leemos el contenido del archivo JSON existente
+                    if (!string.IsNullOrEmpty(jsonViejo)) // Verificamos que el contenido no esté vacío
                     {
-                        listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonViejo) ?? new List<Usuario>();
+                        // Deserializamos el JSON existente a la lista de usuarios
+                        listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonViejo) ?? new List<Usuario>(); 
                     }
                 }
                 //Si el JSON estaba vacío, corrupto o mal formateado, 
-                // reiniciamos la lista vacía para que no tire el cartel de error en la pantalla
                 catch (JsonException)
                 {
-                    listaUsuarios = new List<Usuario>();
+                    listaUsuarios = new List<Usuario>(); // Reiniciamos la lista si hay un error de deserialización
                 }
             }
 
-            // 4. Creamos el objeto con el ROL incluido
+            // Creamos un nuevo objeto Usuario con los datos capturados
             Usuario nuevoUsuario = new Usuario
             {
                 Nombre = nombre,
                 Apellido = apellido,
                 Username = username,
                 Password = password,
-                Rol = rolSeleccionado, 
+                Rol = rolSeleccionado,
                 Cedula = cedula
             };
 
             listaUsuarios.Add(nuevoUsuario); // Agregamos el nuevo usuario a la lista
 
-            // 5. Guardamos la lista unificada en el JSON
+            // Guardamos la lista unificada en el JSON
             try
             {
                 string jsonActualizado = JsonSerializer.Serialize(listaUsuarios, new JsonSerializerOptions { WriteIndented = true });

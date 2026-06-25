@@ -40,16 +40,16 @@
             // dgvUsuarios
             // 
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(75, 24);
+            dgvUsuarios.Location = new Point(75, 29);
             dgvUsuarios.Margin = new Padding(4);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(841, 332);
+            dgvUsuarios.Size = new Size(841, 339);
             dgvUsuarios.TabIndex = 0;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(118, 376);
+            btnModificar.Location = new Point(110, 400);
             btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(189, 44);
@@ -60,7 +60,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(369, 376);
+            btnEliminar.Location = new Point(380, 400);
             btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(205, 44);
@@ -71,7 +71,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(648, 376);
+            btnVolver.Location = new Point(679, 400);
             btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(175, 44);

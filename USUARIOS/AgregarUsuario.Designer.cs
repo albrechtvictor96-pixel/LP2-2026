@@ -143,7 +143,7 @@
             // 
             // botonok
             // 
-            botonok.Location = new Point(277, 509);
+            botonok.Location = new Point(271, 509);
             botonok.Margin = new Padding(4);
             botonok.Name = "botonok";
             botonok.Size = new Size(118, 36);
@@ -154,7 +154,7 @@
             // 
             // botoncancel
             // 
-            botoncancel.Location = new Point(492, 509);
+            botoncancel.Location = new Point(503, 509);
             botoncancel.Margin = new Padding(4);
             botoncancel.Name = "botoncancel";
             botoncancel.Size = new Size(118, 36);

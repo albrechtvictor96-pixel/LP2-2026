@@ -73,7 +73,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(393, 485);
+            btnVolver.Location = new Point(406, 489);
             btnVolver.Margin = new Padding(4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(149, 51);
@@ -84,10 +84,10 @@
             // 
             // btnGestionarUsuarios
             // 
-            btnGestionarUsuarios.Location = new Point(305, 358);
+            btnGestionarUsuarios.Location = new Point(309, 339);
             btnGestionarUsuarios.Margin = new Padding(4);
             btnGestionarUsuarios.Name = "btnGestionarUsuarios";
-            btnGestionarUsuarios.Size = new Size(318, 81);
+            btnGestionarUsuarios.Size = new Size(318, 112);
             btnGestionarUsuarios.TabIndex = 4;
             btnGestionarUsuarios.Text = "Gestionar Usuarios";
             btnGestionarUsuarios.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             pictureBox1.BackColor = SystemColors.ButtonHighlight;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(422, 60);
+            pictureBox1.Location = new Point(421, 60);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(109, 130);
             pictureBox1.TabIndex = 5;

@@ -30,7 +30,7 @@ namespace TP_LP2
             string carpetaUsuarios = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "USUARIOS");// Ruta de la carpeta donde se encuentra el archivo JSON
             string rutaJson = Path.Combine(carpetaUsuarios, "usuarios.json");// Ruta completa del archivo JSON
 
-            if (!File.Exists(rutaJson))
+            if (!File.Exists(rutaJson)) //Si el archivo JSON no existe, mostramos un mensaje de error y salimos del método
             {
                 MessageBox.Show("No hay usuarios registrados en el sistema.", "Error");
                 return;
@@ -70,9 +70,9 @@ namespace TP_LP2
             }
         }
 
-        private void btnGestion_Click(object sender, EventArgs e)
+        private void btnGestion_Click(object sender, EventArgs e) //evento que se ejecuta al hacer click en el boton gestion de usuarios
         {
-            TP_LP2.FormGestionUsuarios formGestion = new TP_LP2.FormGestionUsuarios();
+            TP_LP2.FormGestionUsuarios formGestion = new TP_LP2.FormGestionUsuarios(); // creamos una instancia del formulario de gestion de usuarios
             formGestion.Show();
             this.Hide();
         }
@@ -82,9 +82,9 @@ namespace TP_LP2
             if (txtpassword.PasswordChar == '*')//si el passwordchar es *, entonces lo cambiamos a \0 para mostrar la contraseña
             {
 
-                txtpassword.PasswordChar = '\0';
+                txtpassword.PasswordChar = '\0'; // \0 es el valor por defecto que indica que no hay ningún carácter de contraseña, por lo que se mostrará la contraseña en texto plano
 
-                btnMostrarOcultar.Text = ":)";
+                btnMostrarOcultar.Text = ":)"; // cambiamos el texto del botón a una carita feliz para indicar que la contraseña se está mostrando
 
             }
             else //si el passwordchar es \0, entonces lo cambiamos a * para ocultar la contraseña
@@ -98,6 +98,11 @@ namespace TP_LP2
             // Establecer el PasswordChar al cargar el formulario
             txtpassword.PasswordChar = '*';
 
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); // Cierra la aplicación al hacer clic en el botón "Salir"
         }
     }
 }
